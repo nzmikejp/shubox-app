@@ -8,9 +8,19 @@ class RouteHome extends Component {
         super(props)
       }
 
+
     render(){
         return (
 
+            <Link to =""></Link>
+            <Link to =""></Link>
+            <Link to =""></Link>
+            <Link to =""></Link>
+            
+            <footer>
+                <Link to =""></Link>
+                <Link to =""></Link>
+            </footer>
         );
     }
 }

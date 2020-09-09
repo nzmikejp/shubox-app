@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Router, Link, navigate} from '@reach/router'
+//import API from './API'
+
+import RouteDescription from './RouteDescription'
+import RouteHome from './RouteHome'
+import RouteListingAdd from './RouteListingAdd'
+import RouteListings from './RouteListings'
+import RouuteListingUpdate from './RouteListingUpdate'
+
 import './assets/css/style.css';
 
 class App extends Component {
@@ -24,6 +32,18 @@ class App extends Component {
             Learn React
           </a>
         </header>
+
+        <Router>
+          
+          <RouteHome path="/" component={Home}/>
+          <RouteDescription path="/" component={Description}/>
+          <RouteListings path="/" component={Listings}/>
+          <RouteListingAdd path="/" component={LisitingAdd}/>
+          <RouteListingUpdate path="/" component={ListingUpdate}/>   
+                 
+        </Router>
+
+
       </div>
     );
   }

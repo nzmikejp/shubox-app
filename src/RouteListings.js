@@ -11,6 +11,15 @@ class RouteListings extends Component {
     render(){
         return (
 
+            //Unsure how many links needed to get to the description page from an image in the main feed
+
+
+            <footer>
+                <Link to =""></Link>
+                <Link to =""></Link>
+                <Link to =""></Link>
+            </footer>
+
         );
     }
 }
