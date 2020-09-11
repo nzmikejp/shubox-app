@@ -3,22 +3,23 @@ import axios from 'axios';
 var urlPrefix = 'http://localhost:4000/api'
 
 var API = {
+    
     serverUrl: 'http://localhost:4000/',
     
-    getItems : () => {
-        return axios.get(urlPrefix+'/items')
+    getListings : () => {
+        return axios.get(urlPrefix+'/listings')
     },
-    getSingleItems : (id) => {
-        return axios.get(urlPrefix+'/items/'+id)
+    getSingleListings : (id) => {
+        return axios.get(urlPrefix+'/listings/'+id)
     },
-    addItem : (data) => {
-        return axios.post(urlPrefix+'/items',data)
+    addListing : (data) => {
+        return axios.post(urlPrefix+'/listings',data)
     },
-    updataItem : (id,data) => {
-        return axios.put(urlPrefix+'/items/'+id,data)
+    updateListing : (id,data) => {
+        return axios.put(urlPrefix+'/listings/'+id,data)
     },
-    deleteItem : (id) => {
-        return axios.delete(urlPrefix+'/items/'+id)
+    deleteListing : (id) => {
+        return axios.delete(urlPrefix+'/listings/'+id)
     },
     getTypes : () => {
         return axios.get(urlPrefix+'/types')
