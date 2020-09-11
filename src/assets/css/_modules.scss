@@ -1,0 +1,356 @@
+.btn {
+    padding: 0.7em 0.85em;
+    text-transform: uppercase;
+    font-weight: $font-bold;
+    color: $light-color;
+    font-size: 1em;
+    border-radius: $s-border-radius;
+    border: none;
+    box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.5);
+}
+
+.btn-gray {
+    background-color: $med-gray;
+}
+
+.btn-red {
+    background-color: $red-accent;
+}
+
+.btn-green {
+    background-color: $green-accent;
+}
+
+.btn-noshadow {
+    box-shadow: none;
+}
+
+.btn-round-l {
+    width: 2em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: $light-color;
+}
+
+.btn-round-s {
+    width: 1.8em;
+    height: 1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: $light-color;
+    border: 2px $light-color solid;
+}
+
+.btn-font-s {
+    font-size: 0.75em;
+}
+
+.btn-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(1em, 1em);
+}
+
+.btn-settings {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-1em, 1em);
+}
+
+.btn-small {
+    font-size: 0.625em;
+}
+
+.item-price {
+    h1 {
+        font-size: 0.8em;
+        text-transform: uppercase;
+    }
+
+    span {
+        font-size: 0.6em;
+        padding-right: 0.5em;
+    }
+}
+
+.type-gender {
+    font-weight: $font-bold;
+    text-transform: uppercase;
+    color: $light-color;
+    font-size: 0.625em;
+    background-color: $red-accent;
+    display: inline-block;
+    padding: 0.6em 1em;
+    margin: 0;
+    border-radius: $m-border-radius;
+}
+
+.listing-item {
+    width: 100%;
+    padding: 0.5em;
+    background-image: $gray-item-gradient;
+    border-radius: $m-border-radius;
+    display: flex;
+    position: relative;
+    
+    &:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+
+    .listing-description {
+        flex: 1 0 30%;
+    }
+
+    .listing-image {
+        flex: 0 0 8em;
+        height: 8em;
+        overflow: hidden;
+        border-radius: $m-border-radius;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0.2em 0.2em 0.5em rgba(0,0,0,0.1);
+
+        img {
+            display: block;
+            height: 8em;
+        }
+    }
+
+    .listing-info {
+        padding-right: 0.5em;
+
+        h1 {
+            margin: 0.5em 0 0 0;
+        }
+
+        h2 {
+            margin: 0;
+        }
+    }
+
+    .listing-price {
+        display: flex;
+        align-items: center;
+    }
+
+    .item-price {
+        margin-right: 1em;
+        padding-right: 1em;
+        border-right: thin rgba(0,0,0,0.1) solid;
+    }
+}
+
+.profile-image {
+    width: 1.66em;
+    height: 1.66em;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.2);
+
+    img {
+        display: block;
+        width: 100%;
+    }
+}
+
+.profile-title {
+    background-color: $light-gray;
+    border-radius: $s-border-radius;
+    color: $light-color;
+    font-weight: $font-bold;
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    font-size: 0.35em;
+    margin: 0;
+}
+
+.profile-user {
+    margin: 0;
+}
+
+
+.divider {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    margin: 1.8em 0;
+}
+
+.divider-dark {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    margin: 1.8em 0;
+}
+
+.signup-link {
+    color: $light-color;
+    text-transform: uppercase;
+    font-size: 0.46em;
+    font-weight: $font-bold;
+    margin: 2.7em;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+}
+
+.pure-form {
+    width: 80%;
+}
+
+.form-group {
+    label {
+        color: $light-color;
+        text-transform: uppercase;
+        font-size: 0.75em;
+        padding-left: 0.5em;
+    }
+
+    input {
+        width: 100%;
+
+        &::placeholder {
+            text-transform: uppercase;
+            font-size: 0.75em;
+        }
+    }
+
+    .signup-link {
+        display: block;
+    }
+}
+
+.with-btn {
+    text-align: center;
+}
+
+.form-group:not(:first-child) {
+    margin-top: 1em;
+}
+
+.pure-form input[type=text], .pure-form input[type=password], .pure-form input[type=file], .pure-form textarea {
+    border: none;
+    box-shadow: none;
+    padding: 0.6em;
+    margin-top: 0.5em;
+}
+
+.pure-form input[type=file] {
+    color: $med-gray;
+    font-size: 0.75em;
+}
+
+.pure-form textarea {
+    width: 100%;
+    color: $med-gray;
+    text-transform: uppercase;
+    font-size: 0.75em;
+}
+
+.pure-form select {
+    border: thin rgba(0,0,0,0.1) solid;
+    box-shadow: none;
+    width: 100%;
+    height: auto;
+    color: $med-gray;
+    text-transform: uppercase;
+    font-size: 0.75em;
+}
+
+.pure-form input[type=file] {
+    border-radius: $s-border-radius;
+}
+
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: $red-accent;
+    border-radius: $l-border-radius-top;
+    display: none;
+    
+    
+    .user-info {
+        height: 2.5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .user-profile {
+        flex: 1 0 auto;
+        padding-left: 1.2em;
+        display: flex;
+        align-items: center;
+
+        .profile-image {
+            width: 1.66em;
+            height: 1.66em;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .profile-image + p {
+            padding-left: 1em;
+            color: $light-color;
+            font-size: 0.7em;
+
+            span {
+                font-weight: $font-bold;
+            }
+        }
+    }
+
+    .logo {
+        flex: 0 0 30%;
+        padding-right: 1.2em;
+
+        img {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+    .nav {
+       height: 5.56em;
+       background-image: $red-gradient;
+       box-shadow: $box-shadow-top;
+       border-radius: $l-border-radius-top;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       padding: 0 2.3em;
+
+       i {
+           color: $light-color;
+           font-size: 1.93em;
+       }
+    }
+
+
+}
+
+.footer.active {
+    display: block;
+}

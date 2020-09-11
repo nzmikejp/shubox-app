@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css');
+@import url('https://unpkg.com/purecss@2.0.3/build/pure-min.css');
+
+$primary-font: 'Poppins', sans-serif;
+$font-bold: 700;
+$font-normal: 400;
+$font-semi-bold: 600;
+
+$light-color: #fff;
+$dark-color: #191919;
+$dark-gray: #414141;  
+$med-gray: #696969;
+$light-gray: #afafaf;
+$red-accent: #c50308;
+$green-accent: #8aba00;
+
+$red-gradient: linear-gradient(180deg, $dark-color 0%, $red-accent 190.45%);
+$gray-header-gradient: linear-gradient(180deg, $light-color 0%, #F3F3F3 100%);
+$gray-item-gradient: linear-gradient(180deg, $light-color 0%, #F3F3F3 100%);
+$gray-page-gradient: linear-gradient(0deg, $light-color 0%, #F3F3F3 100%);
+$gray-type-gradient: linear-gradient(180deg, $light-color 26.48%, #F7F7F7 75.83%, #F0F0F0 78.77%, #E2E2E2 100%);
+
+$box-shadow-top: 0px -0.31em 0.31em rgba(0, 0, 0, 0.25);
+
+$l-border-radius-top: 1.375em 1.375em 0 0;
+$l-border-radius-bottom: 0 0 1.375em 1.375em;
+$m-border-radius: 0.5em;
+$s-border-radius: 0.31em;
+
+$btn-border-radius: 0.31em; 
+$type-border-radius: 0.25em;
+
+@mixin intro-images($size, $position) {
+    background-size: 100%, $size;
+    background-position: center top, center $position;
+    background-repeat: no-repeat;
+}
+
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

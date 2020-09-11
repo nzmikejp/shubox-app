@@ -1,38 +1,499 @@
-.App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
+@import './base', './layout', './modules';
+
+.route-start {
+    @include intro-images(28.53em, 101%);
+    background-color: $dark-color; 
+    background-image: url('../images/harftone-bg.svg'),
+                      url('../images/shoe-intro.png');
+    
+    .container {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+        padding-top: 11em;
+
+        img {
+            display: block;
+            max-width: 50%;
+            margin-bottom: 1em;
+        }
     }
-  }
-  
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
+}
+
+
+.route-user-login {
+    @include intro-images(25.18em, 103%);
+    background-color: $dark-color; 
+    background-image: url('../images/harftone-bg.svg'),
+                      url('../images/boot-signin.png');
+    
+    .container {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+        padding-top: 3.625em;
+
+        img {
+            display: block;
+            max-width: 7em;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            color: $light-color;
+            margin: 0;
+        }
     }
-    to {
-      transform: rotate(360deg);
+}
+
+.route-create-user {
+    @include intro-images(25.18em, 101%);
+    background-color: $dark-color; 
+    background-image: url('../images/harftone-bg.svg'),
+                      url('../images/shoe-signup.png');
+    
+    .container {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+        padding-top: 3.625em;
+
+        img {
+            display: block;
+            max-width: 7em;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            color: $light-color;
+            margin: 0;
+        }
     }
-  }
+}
+
+.route-types {
+    background-color: $light-color;
+    padding: 1em 0.6em;
+
+    .catergory {
+        background-image: $gray-type-gradient;
+        border-radius: $m-border-radius;
+        position: relative;
+        height: 9.56em;
+        display: flex;
+        justify-content: center;
+        
+        &:not(:last-child) {
+            margin-bottom: 0.8em;
+        }
+
+        .catergory-title {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(-1.1em, 1.1em);
+
+            h1 {
+                color: $med-gray;
+            }
+        }
+
+        .catergory-image {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 0.5em;
+
+            img {
+                display: block;
+                width: 70%;
+            }
+        }
+    }
+}
+
+.route-listings {
+    background-color: $light-color;
+
+    .container {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+        padding: 0 0.6em;
+    }
+
+    .listing-btns {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.route-listing {
+    position: relative;
+
+    .description-image {
+        position: relative;
+        z-index: 20;
+
+        img {
+            display: block;
+            width: 100%;
+            border-radius: $l-border-radius-bottom;
+            box-shadow: 0 0.5em 1em rgba(0,0,0,0.1);
+        }   
+    }
+
+    .description-wrap {
+        width: 100%;
+        height: 100%;
+        padding: 0 0.6em;
+        margin-top: -1em;
+    }
+
+    .description-container {
+        background-image: $gray-page-gradient;
+        height: 100%;
+    }
+
+    .description-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 2em 1em 0 1em;
+
+        h1 {
+          margin: 0;  
+        }
+        
+        h2 {
+          margin: 0;  
+        }
+    }
+
+    .description-body {
+        padding: 0.5em 1em;
+    }
+
+    .description-details {
+        padding: 0 1em;
+        display: flex;
+        align-items: center;
+
+        & > div {
+            flex: 1 0 30%;
+        }
+
+        & > div:not(:last-child) {
+            border-right: thin rgba(0,0,0,0.1) solid;
+        }
+    }
+
+    .description-buynow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .description-seller {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .profile-details {
+        margin-left: 0.5em;
+    }
+
+    .divider-dark {
+        margin: 1em 0;
+    }
+
+    .description-comments {
+        padding: 0 1em;
+
+        h1 {
+            font-size: 0.75em;
+            color: $med-gray;
+            text-align: center;
+        }
+
+        .pure-form input[type=text] {
+            border: thin rgba(0,0,0,0.1) solid;
+        }
+
+        .pure-form {
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+
+            input {
+                flex: 1 0 50%;
+            }
+        }
+
+        .btn-round-l {
+            border: none;
+            margin-left: 0.5em;
+        }
+    }
+
+    .description-comment-dialogue {
+        border: thin rgba(0,0,0,0.1) solid;
+        border-radius: $s-border-radius;
+        padding: 0.5em;
+    }
+
+    .dialogue-comment {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &:not(:last-child) {
+            border-bottom: thin rgba(0,0,0,0.1) solid;
+        }
+
+        .profile-image {
+            flex: 0 0 10%;
+        }
+
+        .profile-comment {
+            flex: 1 0 50%;
+            margin-left: 1em;
+        }
+
+        .btn-round-s {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(70%,-50%);
+        }
+    }
+
+}
+
+.route-user {
+    background-color: $light-color;
+
+    .container {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+        padding: 0 0.6em;
+    }
+    
+    .header {
+        background-image: $gray-header-gradient;
+        width: 100%;
+        text-align: center;
+        border-radius: $l-border-radius-bottom;
+        padding: 1.5em 0 1em 0;
+        margin-bottom: 1em;
+        
+        h1 {
+            color: $dark-gray;
+            margin: 0;
+            padding-top: 0.5em;
+        }
+
+        h2 {
+            margin: 0;
+        }
+    }
+
+    .divider-dark {
+        margin: 1em;
+    }
+
+    .profile-image {
+        width: 4.5em;
+        height: 4.5em;
+        margin: 0 auto;
+    
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .listing-btns {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.route-create-listing {
+    background-color: $light-color;
+
+    .container {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+
+        img {
+            display: block;
+            max-width: 7em;
+            margin-bottom: 1em;
+        }
+
+    }
+    
+    .header {
+        background-image: $gray-header-gradient;
+        width: 100%;
+        text-align: center;
+        border-radius: $l-border-radius-bottom;
+        
+        h1 {
+            color: $dark-gray;
+            margin: 0;
+            padding-top: 2em;
+            padding-bottom: 0.8em;
+        }
+    }
+
+    .pure-form {
+        padding-top: 0.5em;
+    }
+
+    .with-btn {
+        margin: 0;
+    }
+
+    .btn {
+        box-shadow: none;
+    }
+
+    .form-group {
+        label {
+            color: $dark-gray;
+        }
+    }
+
+    .pure-form input[type=text], .pure-form input[type=password], .pure-form input[type=file], .pure-form textarea {
+        border: thin rgba(0,0,0,0.1) solid;
+    }
+}
+
+.route-update-listing {
+    background-color: $light-color;
+
+    .container {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+
+        img {
+            display: block;
+            max-width: 7em;
+            margin-bottom: 1em;
+        }
+
+    }
+    
+    .header {
+        background-image: $gray-header-gradient;
+        width: 100%;
+        text-align: center;
+        border-radius: $l-border-radius-bottom;
+        
+        h1 {
+            color: $dark-gray;
+            margin: 0;
+            padding-top: 2em;
+            padding-bottom: 0.8em;
+        }
+    }
+
+    .pure-form {
+        padding-top: 0.5em;
+    }
+
+    .with-btn {
+        margin: 0;
+    }
+
+    .btn {
+        box-shadow: none;
+    }
+
+    .form-group {
+        label {
+            color: $dark-gray;
+        }
+    }
+
+    .pure-form input[type=text], .pure-form input[type=password], .pure-form input[type=file], .pure-form textarea {
+        border: thin rgba(0,0,0,0.1) solid;
+    }
+}
+
+.route-update-user {
+    background-color: $light-color;
+
+    .container {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+
+        img {
+            display: block;
+            max-width: 7em;
+            margin-bottom: 1em;
+        }
+
+    }
+    
+    .header {
+        background-image: $gray-header-gradient;
+        width: 100%;
+        text-align: center;
+        border-radius: $l-border-radius-bottom;
+        
+        h1 {
+            color: $dark-gray;
+            margin: 0;
+            padding-top: 2em;
+            padding-bottom: 0.8em;
+        }
+    }
+
+    .pure-form {
+        padding-top: 0.5em;
+    }
+
+    .with-btn {
+        margin: 0;
+    }
+
+    .btn {
+        box-shadow: none;
+    }
+
+    .form-group {
+        label {
+            color: $dark-gray;
+        }
+    }
+
+    .pure-form input[type=text], .pure-form input[type=password], .pure-form input[type=file], .pure-form textarea {
+        border: thin rgba(0,0,0,0.1) solid;
+    }
+}
+
+
+
+

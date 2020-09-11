@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Router} from "@reach/router"
+import RouteListings from './RouteListings'
+import RouteAddListing from './RouteAddListing'
+import RouteUpdateListing from './RouteUpdateListing'
+import Footer from './Footer'
 import './assets/css/style.css';
 
 class App extends Component {
@@ -10,20 +14,15 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <main>
+          <Router>
+            <RouteListings path="listings"/>
+            <RouteAddListing path="listings/create"/>
+            <RouteUpdateListing path="listings/:id/edit"/>
+            <RouteListings default/>
+          </Router>
+          <Footer/>
+        </main>
       </div>
     );
   }

@@ -1,0 +1,48 @@
+h1 {
+    font-weight: $font-bold;
+    color: $dark-gray;
+    font-size: 1.2em;
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    color: $light-gray;
+    font-size: 0.81em;
+    font-weight: $font-normal;
+    letter-spacing: -0.05em;
+}
+
+p {
+    color: $dark-color;
+    font-size: 0.6em;
+    letter-spacing: -0.03em;
+    line-height: 1.37;
+}
+
+body {
+    font-family: $primary-font;
+}
+
+.app {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: scroll;
+}
+
+.section {
+    width: 100%;
+    height: 100%;
+}
+
+.section-scroll {
+    width: 100%;
+    padding-bottom: 8.3em;
+}
+
