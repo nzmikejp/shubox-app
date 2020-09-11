@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './assets/css/style.css';
+import API from './API';
 
 class App extends Component {
   constructor(props){
