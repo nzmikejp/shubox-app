@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-//import {Link} from '@reach/router'
+import {Link, navigate} from '@reach/router'
 //import API from './API'
 
 class RouteListings extends Component {
@@ -19,6 +19,12 @@ class RouteListings extends Component {
                 <Link to =""></Link>
                 <Link to =""></Link>
             </footer>
+
+            <Router>
+
+
+                
+            </Router>
 
         );
     }

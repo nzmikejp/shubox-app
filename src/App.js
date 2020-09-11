@@ -13,6 +13,13 @@ import './assets/css/style.css';
 class App extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      currentUser: null
+    }
+  }
+
+  setCurrentUser = (user) => {
+    this.setState({currentUser:user})
   }
 
   render(){
@@ -33,7 +40,15 @@ class App extends Component {
           </a>
         </header>
 
-        <Router>
+        (This needs to sit within the footer)
+        {
+          currentUser? (<span>Welcome {currentUser.name}</span>) : null
+        }
+        
+
+
+
+        {/* <Router>
           
           <RouteHome path="/" component={Home}/>
           <RouteDescription path="/" component={Description}/>
@@ -41,7 +56,7 @@ class App extends Component {
           <RouteListingAdd path="/" component={LisitingAdd}/>
           <RouteListingUpdate path="/" component={ListingUpdate}/>   
                  
-        </Router>
+        </Router> */}
 
 
       </div>

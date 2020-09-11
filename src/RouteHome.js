@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-//import {Link} from '@reach/router'
+import {Link} from '@reach/router'
 //import API from './API'
 
 class RouteHome extends Component {
@@ -7,7 +7,6 @@ class RouteHome extends Component {
     constructor(props){
         super(props)
       }
-
 
     render(){
         return (
@@ -21,6 +20,13 @@ class RouteHome extends Component {
                 <Link to =""></Link>
                 <Link to =""></Link>
             </footer>
+
+            <Router>
+                
+
+
+            </Router>    
+
         );
     }
 }
