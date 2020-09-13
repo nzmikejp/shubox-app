@@ -23,13 +23,17 @@ class App extends Component {
     }
   }
 
+  setHasFooter = (state) => {
+    this.setState({hasFooter:state})
+  }
+
   render(){
     var {hasFooter} = this.state
 
     return (
       <div className="App">
           <Router>
-            <RouteWelcome path="/"/>
+            <RouteWelcome setHasFooter={this.setHasFooter} path="/"/>
             <RouteLogin path="users/authenticate"/>
             <RouteAddUser path="users/create"/>
             <RouteTypes path="types"/>
