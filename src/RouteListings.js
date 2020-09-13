@@ -14,11 +14,13 @@ class Listings extends Component {
 
     render(){
         return(
-            <section className="section route-listings">
-                <div className="container">
-                    <Listing/>
-                </div>
-            </section>
+            <main>
+                <section className="section route-listings">
+                    <div className="container">
+                        <Listing/>
+                    </div>
+                </section>
+            </main>
         )
     }
 }

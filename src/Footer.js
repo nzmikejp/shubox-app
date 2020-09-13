@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from '@reach/router'
 
 class Footer extends Component {
     constructor(props){
@@ -20,9 +21,15 @@ class Footer extends Component {
                     </div>
                 </div>
                 <div className="nav">
-                    <i className="fas fa-home"></i>
-                    <i className="fas fa-compass"></i>
-                    <i className="fas fa-user"></i>
+                    <Link to="types">
+                        <i className="fas fa-home"></i>
+                    </Link>
+                    <Link to="listings">
+                        <i className="fas fa-compass"></i>
+                    </Link>
+                    <Link to="user/profile">
+                        <i className="fas fa-user"></i>
+                    </Link>
                 </div>
             </footer>
         )
