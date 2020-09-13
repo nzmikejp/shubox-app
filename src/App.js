@@ -9,6 +9,7 @@ import RouteListingDescription from './RouteListingDescription'
 import RouteAddListing from './RouteAddListing'
 import RouteUpdateListing from './RouteUpdateListing'
 import RouteProfile from './RouteProfile'
+import RouteUpdateUser from './RouteUpdateUser'
 import Footer from './Footer'
 import './assets/css/style.css';
 import API from './API';
@@ -31,6 +32,7 @@ class App extends Component {
             <RouteAddListing path="listings/create"/>
             <RouteUpdateListing path="listings/:id/edit"/>
             <RouteProfile path="user/profile"/>
+            <RouteUpdateUser path="users/:id/edit"/>
             <RouteWelcome default/>
           </Router>
           <Footer/>
