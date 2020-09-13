@@ -17,9 +17,15 @@ import API from './API';
 class App extends Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      hasFooter: false,
+    }
   }
 
   render(){
+    var {hasFooter} = this.state
+
     return (
       <div className="App">
           <Router>
@@ -35,7 +41,7 @@ class App extends Component {
             <RouteUpdateUser path="users/:id/edit"/>
             <RouteWelcome default/>
           </Router>
-          <Footer/>
+          {hasFooter ? (<Footer/>) : null}
       </div>
     );
   }
