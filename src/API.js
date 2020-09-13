@@ -36,6 +36,12 @@ var API = {
     authenticate : (data) => {
         return axios.post(urlPrefix+'/users/authenticate',data)
     },
+    getCategories : () => {
+        return axios.get(urlPrefix+'/categories')
+    },
+    getSingleCategories : (id) => {
+        return axios.get(urlPrefix+'/categories/'+id)
+    },
     uploadFile : (formData) => {
         var settings = {headers: {'Content-Type': 'multipart/form-data'}}
         return axios.post(urlPrefix+'/upload',formData,settings)
