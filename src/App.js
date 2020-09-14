@@ -18,10 +18,11 @@ class App extends Component {
         <main>
           <Router>
             <RouteLogin path="/users/authenticate"/>
+            <RouteSignup path="user/create"/>
             <RouteListings path="listings"/>
             <RouteAddListing path="listings/create"/>
             <RouteUpdateListing path="listings/:id/edit"/>
-            <RouteListings default/>
+            <RouteLogin default/>
           </Router>
           <Footer/>
         </main>
