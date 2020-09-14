@@ -12,21 +12,32 @@ import API from './API';
 class App extends Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      hasFooter: false,
+    }
+  }
+
+  setHasFooter = (state) => {
+    this.setState({hasFooter:state})
   }
 
   render(){
     return (
       <div className="App">
         <main>
+          <Footer>
           <Router>
-            <RouteLogin path="/users/authenticate"/>
+            <RouteLogin setHasFooter={this.setHasFooter} path="/users/authenticate"/>
             <RouteSignup path="users/create"/>
             <RouteListings path="listings"/>
             <RouteAddListing path="listings/create"/>
             <RouteUpdateListing path="listings/:id/edit"/>
             <RouteLogin default/>
           </Router>
-          <Footer/>
+          {hasFooter ? (<Footer/>) : null}
+          </Footer>
+          
         </main>
       </div>
     );
