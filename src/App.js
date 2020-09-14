@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
           <Router>
-            <RouteWelcome setHasFooter={this.setHasFooter} path="/"/>
+            <RouteWelcome path="/"/>
             <RouteLogin path="users/authenticate"/>
             <RouteAddUser path="users/create"/>
             <RouteTypes path="types"/>
