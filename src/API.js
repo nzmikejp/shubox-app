@@ -9,7 +9,7 @@ var API = {
     getListings : () => {
         return axios.get(urlPrefix+'/listings')
     },
-    getSingleListings : (id) => {
+    getSingleListing : (id) => {
         return axios.get(urlPrefix+'/listings/'+id)
     },
     addListing : (data) => {

@@ -6,7 +6,7 @@ class RouteAddUser extends Component {
             <main>
                 <section className="section route-create-user">
                     <div className="container">
-                        <img src="/images/shu-logo-small.png" alt="" />
+                        <img src="./assets/images/shu-logo-small.png" alt="" />
                         <h1>Account Sign Up</h1>
                         <hr className="divider" />
                         <form action="#" className="pure-form pure-form-stacked">

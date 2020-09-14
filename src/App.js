@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router, Navigate, Link} from "@reach/router"
 import RouteLogin from './RouteLogin'
 import RouteSignup from './RouteSignup'
+import RouteTypes from './RouteTypes'
 import RouteListings from './RouteListings'
 import RouteAddListing from './RouteAddListing'
 import RouteUpdateListing from './RouteUpdateListing'
@@ -14,7 +15,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      hasFooter: false,
+      hasFooter: true,
     }
   }
 
@@ -26,18 +27,15 @@ class App extends Component {
     return (
       <div className="App">
         <main>
-          <Footer>
           <Router>
-            <RouteLogin setHasFooter={this.setHasFooter} path="/users/authenticate"/>
+            <RouteLogin path="/users/authenticate"/>
             <RouteSignup path="users/create"/>
+            <RouteTypes path="types"/>
             <RouteListings path="listings"/>
             <RouteAddListing path="listings/create"/>
             <RouteUpdateListing path="listings/:id/edit"/>
             <RouteLogin default/>
           </Router>
-          {hasFooter ? (<Footer/>) : null}
-          </Footer>
-          
         </main>
       </div>
     );

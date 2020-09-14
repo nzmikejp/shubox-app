@@ -12,11 +12,31 @@ class Listings extends Component {
         }
     }
 
+    loadListings = () => {
+        API.getListings().then(res => {
+            this.setState({listings:res.data})
+        })
+    }
+
+    componentDidMount(){
+        this.loadListings();
+    }
+
     render(){
         return(
             <section className="section route-listings">
                 <div className="container">
-                    <Listing/>
+                    {
+                        this.state.listings.map((listing) => {
+                            var listingProps = {
+                                ...listing,
+                                key: listing.id,
+                                loadListings:this.loadListings
+                            };
+                            return(<Listing {...listingProps}/>)
+                        })
+                    }
+                    
                 </div>
             </section>
         )

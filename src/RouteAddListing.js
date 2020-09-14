@@ -1,10 +1,31 @@
 import React, { Component } from 'react'
-import { Navigate, Link } from '@reach/router'
+import { Navigate, Link, navigate } from '@reach/router'
 import API from './API'
 
 class RouteAddListing extends Component {
     constructor(props){
         super(props)
+    }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault()
+
+        var formData = new FormData(this.form)
+
+        API.uploadFile(formData)
+        .then(res => res.data)
+        .then(fileName => {
+            var {currentUser} = this.props;
+            var data = {
+                brand:formData.get('brand'),
+                shoes_style:formData.get('shoe-style'),
+                price:formData.get('price'),
+                photo: fileName,
+                type_id:formData.get('type-input'),
+                user_id:currentUser.id
+            }
+            API.addListing(data).then(res => navigate('/listings'))
+        })
     }
 
     render(){
@@ -14,7 +35,7 @@ class RouteAddListing extends Component {
                     <div className="header">
                         <h1>Create a Listing</h1>
                     </div>
-                    <form action="#" className="pure-form pure-form-stacked">
+                    <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}} className="pure-form pure-form-stacked">
                         <div className="form-group">
                             <label for="brand">Brand:</label>
                             <input type="text" name="brand" id="brand" placeholder="Enter your brand name" />

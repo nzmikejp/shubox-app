@@ -525,7 +525,7 @@ main {
   background-position: center top, center 103%;
   background-repeat: no-repeat;
   background-color: #191919;
-  background-image: url("../images/harftone-bg.svg"), url("../images/boot-signin.png");
+  background-image: url("../images/harftone-bg.svg"), url("../images/shoe-intro.png");
 }
 
 .route-user-login .container {

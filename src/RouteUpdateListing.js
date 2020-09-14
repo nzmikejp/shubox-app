@@ -5,16 +5,44 @@ import API from './API'
 class RouteUpdateListing extends Component {
     constructor(props){
         super(props)
+        this.state = {
+            listing:{}
+        }
+    }
+
+    componentDidMount(){
+        var {id} = this.props;
+        API.getSingleListing(id).then(res => {
+            this.setStatee({listing:res.data})
+        })
+    }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault()
+        
+        var formData = new FormData(this.form)
+
+        var data = {
+            brand:formData.get('brand'),
+            shoes_style:formData.get('shoe-style'),
+            price:formData.get('price'),
+            type_id:formData.get('type-input'),
+        }
+
+        var {id} = this.props;
+        API.updateListing(id,data).then(res => navigate('/listings'))
     }
 
     render(){
+
+        var {brand,shoes_style,price,type_id} = this.state.listing
         return(
             <section className="section-scroll route-update-listing">
                 <div className="container">
                     <div className="header">
                         <h1>Update your Listing</h1>
                     </div>
-                    <form action="#" className="pure-form pure-form-stacked">
+                    <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}} className="pure-form pure-form-stacked">
                         <div className="form-group">
                             <label for="brand">Brand:</label>
                             <input type="text" name="brand" id="brand" placeholder="Enter your brand name"/>
