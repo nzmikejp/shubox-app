@@ -95,9 +95,10 @@
             top: 0;
             right: 0;
             transform: translate(-1.1em, 1.1em);
-
+            
             h1 {
                 color: $med-gray;
+                text-transform: capitalize;
             }
         }
 

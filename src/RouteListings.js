@@ -8,7 +8,16 @@ class Listings extends Component {
         super(props)
 
         this.state = { 
-            listings: []
+            listings: [
+                {
+                    id: 1,
+                    brand: 'Dr Martens',
+                    name: 'jadon boot',
+                    description: "A fierce evolution of the 8-eye boot, the Jadon retains all its original details — grooved edges, yellow stitching and a heel-loop — and adds a chunky, empowering...",
+                    price: 360,
+                    photo: 'boots-1'
+                }
+            ]
         }
     }
 
@@ -17,7 +26,15 @@ class Listings extends Component {
             <main>
                 <section className="section route-listings">
                     <div className="container">
-                        <Listing/>
+                        {
+                            this.state.listings.map((listing) => {
+                                var props = {
+                                    key: listing.id,
+                                    ...listing,
+                                }
+                                return (<Listing {...props} />)
+                            })
+                        }
                     </div>
                 </section>
             </main>

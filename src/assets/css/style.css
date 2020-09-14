@@ -621,6 +621,7 @@ main {
 
 .route-types .catergory .catergory-title h1 {
   color: #696969;
+  text-transform: capitalize;
 }
 
 .route-types .catergory .catergory-image {

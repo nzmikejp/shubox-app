@@ -8,25 +8,29 @@ class Listing extends Component {
     }
 
     render() {
+        var {brand, name, description, price, photo} = this.props
+        var photoPath = '/images/'+photo+'.png'
+        var pricePrefix = '$'+price
+
         return (
             <div className="listing-item">
                 <div className="listing-description">
                     <div className="listing-info">
-                        <h1>Dr Martens</h1>
-                        <h2>Jadon Boot</h2>
+                        <h1>{brand}</h1>
+                        <h2>{name}</h2>
                         <p>
-                            A fierce evolution of the 8-eye boot, the Jadon retains all its original details — grooved edges, yellow stitching and a heel-loop — and adds a chunky, empowering...
+                            {description}
                         </p>
                     </div>
                     <div className="listing-price">
                         <div className="item-price">
-                            <h1><span>Price</span>$350.00</h1>
+                            <h1><span>Price</span>{pricePrefix}</h1>
                         </div>
                         <p className="type-gender">unisex</p>
                     </div>
                 </div>
                 <div className="listing-image">
-                    <img src="/images/boots-1.png" alt="" />
+                    <img src={photoPath} alt="" />
                 </div>
                 <div className="listing-btns">
                     <div className="btn-round-s btn-gray">

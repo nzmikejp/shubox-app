@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Type from './Type'
+import API from './API'
 
 class RouteTypes extends Component {
     constructor(props){
@@ -11,10 +12,36 @@ class RouteTypes extends Component {
                    id: 1,
                    name: "sneakers",
                    photo: "type-1"
-               } 
+               }, 
+               {
+                   id: 2,
+                   name: "runners",
+                   photo: "type-2"
+               }, 
+               {
+                   id: 3,
+                   name: "boots",
+                   photo: "type-3"
+               }, 
+               {
+                   id: 4,
+                   name: "kids",
+                   photo: "type-4"
+               }, 
             ]
         }
     }
+
+    // loadTypes = () => {
+    //     API.getTypes().then(res => {
+    //         this.setState({types: res.data})
+    //     })
+    // }
+
+    // componentDidMount(){
+    //     this.loadTypes()
+    // }
+
     render(){
 
         return(
@@ -25,6 +52,7 @@ class RouteTypes extends Component {
                         var props = {
                             key: type.id,
                             ...type,
+                            loadTypes:this.loadTypes
                         }
                         return (<Type {...props} />)
                     })
