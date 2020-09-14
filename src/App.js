@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Navigate, Link} from "@reach/router"
+import RouteLogin from './RouteLogin'
+import RouteSignup from './RouteSignup'
 import RouteListings from './RouteListings'
 import RouteAddListing from './RouteAddListing'
 import RouteUpdateListing from './RouteUpdateListing'
@@ -18,7 +20,7 @@ class App extends Component {
         <main>
           <Router>
             <RouteLogin path="/users/authenticate"/>
-            <RouteSignup path="user/create"/>
+            <RouteSignup path="users/create"/>
             <RouteListings path="listings"/>
             <RouteAddListing path="listings/create"/>
             <RouteUpdateListing path="listings/:id/edit"/>
