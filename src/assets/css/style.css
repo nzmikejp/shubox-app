@@ -68,6 +68,16 @@ main {
           box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.5);
 }
 
+.btn-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1em;
+}
+
 .btn-gray {
   background-color: #696969;
 }
@@ -643,6 +653,15 @@ main {
 
 .route-listings {
   background-color: #fff;
+}
+
+.route-listings .header-container {
+  border-bottom: thin grey solid;
+  margin-bottom: 0.5em;
+}
+
+.route-listings .header-title {
+  margin-left: 1em;
 }
 
 .route-listings .container {

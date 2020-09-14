@@ -3,9 +3,24 @@ import { navigate, Link } from '@reach/router'
 import API from './API'
 
 class RouteAddListing extends Component {
-    constructor(props){
-        super(props)
+    
+    handleFormSubmit = (e) => {
+        e.preventDefault()
+        var formData = new FormData(this.form);
+
+        var data = {
+            brand:formData.get('brand'),
+            name:formData.get('shoe-style'),
+            price:formData.get('price'),
+            // photo:formData.get('photo'),
+            type_id:formData.get('shoe-type'),
+            category_id:formData.get('category'),
+            description:formData.get('description')
+        }
+
+        API.addListing(data).then(res => navigate('/listings'))
     }
+
 
     render(){
         return(
@@ -14,10 +29,10 @@ class RouteAddListing extends Component {
                     <div className="header">
                         <h1>Create a Listing</h1>
                     </div>
-                    <form action="#" className="pure-form pure-form-stacked">
+                    <form action="#" className="pure-form pure-form-stacked" onSubmit={this.handleFormSubmit} ref={(el)=> {this.form = el}}>
                         <div className="form-group">
                             <label for="brand">Brand:</label>
-                            <input type="text" name="brand" id="brand" placeholder="Enter your brand name" />
+                            <input type="text" name="brand" id="brand" placeholder="Enter your brand name"/>
                         </div>
                         <div className="form-group">
                             <label for="shoe-style">Shoe style name:</label>
@@ -29,7 +44,7 @@ class RouteAddListing extends Component {
                         </div>
                         <div className="form-group">
                             <label for="photo">Photo:</label>
-                            <input type="file" name="photo" id="photo" />
+                            <input type="text" name="photo" id="photo"/>
                         </div>
                         <div className="form-group">
                             <label for="shoe-type">Shoe Type:</label>
