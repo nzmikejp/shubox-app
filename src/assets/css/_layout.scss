@@ -12,6 +12,12 @@ h2 {
     letter-spacing: -0.05em;
 }
 
+h3 {
+    color: $light-color;
+    font-size: 0.7em;
+    display: inline-flex;
+}
+
 p {
     color: $dark-color;
     font-size: 0.6em;

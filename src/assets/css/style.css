@@ -22,6 +22,14 @@ h2 {
   letter-spacing: -0.05em;
 }
 
+h3 {
+  color: #fff;
+  font-size: 0.7em;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
 p {
   color: #191919;
   font-size: 0.6em;
@@ -658,6 +666,7 @@ main {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   padding: 0 0.6em;
+  padding-bottom: 8.5em;
 }
 
 .route-listings .listing-btns {
