@@ -677,6 +677,7 @@ main {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   padding: 0 0.6em;
+  padding-bottom: 8.5em;
 }
 
 .route-listings .listing-btns {

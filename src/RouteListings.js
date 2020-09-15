@@ -8,31 +8,7 @@ class Listings extends Component {
         super(props)
 
         this.state = { 
-            listings: [
-                {
-                    id: 1,
-                    name: "jadon shoe",
-                    brand:"dr marten",
-                    description: "thick platform shoe",
-                    price: 360,
-                    gender: "unisex",
-                    photo: "/images/boots-1.png",
-                    type_id: 1,
-                    user_id: 1,
-                    category_id: 1
-                },{
-                    id: 2,
-                    name: "Converse",
-                    brand:"conny",
-                    description: "thick platform shoe",
-                    price: 360,
-                    gender: "unisex",
-                    photo: "/images/boots-3.png",
-                    type_id: 1,
-                    user_id: 1,
-                    category_id: 1
-                }
-            ]
+            listings: []
         }
     }
     loadListings = () => {
@@ -40,6 +16,7 @@ class Listings extends Component {
             this.setState({listings:res.data})
         })
     }
+    
     componentDidMount(){
         this.loadListings();
     }

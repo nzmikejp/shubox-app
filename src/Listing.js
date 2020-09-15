@@ -1,22 +1,31 @@
 import React, { Component } from 'react'
-import { Link } from '@reach/router'
+import { navigate } from '@reach/router'
 import API from './API'
 
 class Listing extends Component {
-    constructor(props) {
-        super(props)
+    
+    handleDeleteListing = () => {
+        var {id,loadListings} = this.props
+        API.deleteListing(id)
+        loadListings()
+    }
+
+    handleUpdateListing = () => {
+        var {id} = this.props
+        navigate('listings/'+id+'/edit')
     }
 
     render() {
-        var {name, description, price, gender, photo} = this.props
-        var photoPrefix = '/images/'+photo+'.png'
+        var {brand, name, description, price, gender, photo} = this.props
+        // var photoPrefix = '/images/'+photo+'.png'
+        var photoPrefix = '/images/boots-1.png'
 
         return (
             <div className="listing-item">
                 <div className="listing-description">
                     <div className="listing-info">
-                        <h1>{name}</h1>
-                        <h2>Jadon Boot</h2>
+                        <h1>{brand}</h1>
+                        <h2>{name}</h2>
                         <p>
                             {description}
                         </p>
@@ -33,10 +42,10 @@ class Listing extends Component {
                 </div>
                 <div className="listing-btns">
                     <div className="btn-round-s btn-gray">
-                        <i className="fas fa-pen btn-font-s"></i>
+                        <i className="fas fa-pen btn-font-s" onClick={this.handleUpdateListing}></i>
                     </div>
                     <div className="btn-round-s btn-red">
-                        <i className="fas fa-trash btn-font-s"></i>
+                        <i onClick={this.handleDeleteListing} className="fas fa-trash btn-font-s"></i>
                     </div>
                 </div>
             </div>

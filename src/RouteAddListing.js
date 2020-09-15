@@ -3,7 +3,7 @@ import { navigate, Link } from '@reach/router'
 import API from './API'
 
 class RouteAddListing extends Component {
-    
+       
     handleFormSubmit = (e) => {
         e.preventDefault()
         var formData = new FormData(this.form);
@@ -14,7 +14,7 @@ class RouteAddListing extends Component {
             price:formData.get('price'),
             // photo:formData.get('photo'),
             type_id:formData.get('shoe-type'),
-            category_id:formData.get('category'),
+            gender:formData.get('gender'),
             description:formData.get('description')
         }
 
@@ -56,13 +56,13 @@ class RouteAddListing extends Component {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label for="category">Shoe Type:</label>
-                            <select name="category" id="category">
-                                <option value="1">Mens</option>
-                                <option value="2">Womens</option>
-                                <option value="3">Unisex</option>
-                                <option value="4">Kids Girls</option>
-                                <option value="4">Kids Boys</option>
+                            <label for="Gender">Gender:</label>
+                            <select name="gender" id="Gender">
+                                <option value="Mens">Mens</option>
+                                <option value="Womens">Womens</option>
+                                <option value="Unisex">Unisex</option>
+                                <option value="Kids Girls">Kids Girls</option>
+                                <option value="Kids Boys">Kids Boys</option>
                             </select>
                         </div>
                         <div className="form-group">
