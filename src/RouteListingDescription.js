@@ -1,13 +1,39 @@
 import React, { Component } from 'react'
+import { navigate } from '@reach/router'
+import API from './API'
+
 
 class RouteListingDescription extends Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            listing: []
+        }
+    }
+
+    loadListing = () => {
+        var {id} = this.props
+        API.getSingleListing(id).then(res => this.setState({listing:res.data}))
+    }
+    
+    componentDidMount(){
+        this.loadListing()
+    }
+    
     render(){
-        return(
+        var { listing } = this.state
+        var {brand, name, description, price, photo, category, id} = listing
+        var photoPath = '/images/'+photo+'.png'
+        var pricePrefix = '$'+price
+        console.log(category)
+
+        return (
             <main>
                 <section className="section-scroll route-listing">
                     <div className="description-image">
-                        <img src="/images/boots-1.png" alt="" />
-                        <div className="btn-gray btn-round-l btn-back">
+                        <img src={photoPath} alt="" />
+                        <div className="btn-gray btn-round-l btn-back" onClick={()=>{navigate('/listings')}}>
                             <i className="fas fa-chevron-left"></i>
                         </div>
                     </div>
@@ -15,20 +41,19 @@ class RouteListingDescription extends Component {
                         <div className="description-container">
                             <div className="description-header">
                                 <div>
-                                    <h1>Dr Martens</h1>
-                                    <h2>Jadon Boot</h2>
+                                    <h1>{brand}</h1>
+                                    <h2>{name}</h2>
                                 </div>
                                 <p className="type-gender">unisex</p>
                             </div>
                             <div className="description-body">
                                 <p>
-                                    A fierce evolution of the 8-eye boot, the Jadon retains all its original details — grooved edges, yellow stitching and a heel-loop — and adds a chunky, empowering platform sole.
-                                    The unisex Jadon boot is made with the classic Dr. Martens Polished Smooth leather, a lightly textured, highly durable leather with a soft sheen. The boot sits on the durable, comfortable AirWair™ sole, that's oil and fat resistant with good abrasion and slip resistance. Built to last, it's made using one of the finest methods of construction: the Goodyear Welt.
+                                    {description}
                                 </p>
                             </div>
                             <div className="description-details">
                                 <div className="item-price">
-                                    <h1><span>Price</span>$350.00</h1>
+                                    <h1><span>Price</span>{pricePrefix}</h1>
                                 </div>
                                 <div className="description-buynow">
                                     <button className="btn btn-green btn-noshadow btn-small">buy now</button>
@@ -61,7 +86,7 @@ class RouteListingDescription extends Component {
                                         </div>
                                         <p className="profile-comment">
                                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, quos autem veniam facere harum, nostrum minima tempore incidunt praesentium atque velit magnam possimus. Quas saepe quod magni
-                                        </p>
+                                    </p>
                                         <div className="btn-round-s btn-red">
                                             <i className="fas fa-trash btn-font-s"></i>
                                         </div>
@@ -72,7 +97,7 @@ class RouteListingDescription extends Component {
                                         </div>
                                         <p className="profile-comment">
                                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, quos autem veniam facere harum, nostrum minima tempore incidunt praesentium atque velit magnam possimus. Quas saepe quod magni
-                                        </p>
+                                    </p>
                                         <div className="btn-round-s btn-red">
                                             <i className="fas fa-trash btn-font-s"></i>
                                         </div>

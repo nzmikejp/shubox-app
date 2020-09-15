@@ -9,7 +9,7 @@ var API = {
     getListings : () => {
         return axios.get(urlPrefix+'/listings')
     },
-    getSingleListings : (id) => {
+    getSingleListing : (id) => {
         return axios.get(urlPrefix+'/listings/'+id)
     },
     addListing : (data) => {
@@ -24,7 +24,7 @@ var API = {
     getTypes : () => {
         return axios.get(urlPrefix+'/types')
     },
-    getSingleTypes : (id) => {
+    getSingleType : (id) => {
         return axios.get(urlPrefix+'/types/'+id)
     },
     getSingleUser : (id) => {

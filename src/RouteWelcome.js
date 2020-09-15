@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from "@reach/router"
+import { Link, navigate } from "@reach/router"
 
 class RouteWelcome extends Component {
     render(){
@@ -8,13 +8,9 @@ class RouteWelcome extends Component {
                 <section className="section route-start">
                     <div className="container">
                         <img src="/images/shu-logo-large.png" alt="Logo"/>
-                        <Link to="/types">
-                            <button className="btn btn-gray">Browse now</button>
-                        </Link>
+                        <button className="btn btn-gray" onClick={()=> {navigate('/types')}}>Browse now</button>
                         <hr className="divider"/>
-                        <Link to="/users/authenticate">
-                            <button className="btn btn-red">Sign in</button>
-                        </Link>
+                        <button className="btn btn-red" onClick={()=> {navigate('/users/authenticate')}}>Sign in</button>
                         <Link to="/users/create" className="signup-link">dont’ have an account? no problem, sign up here</Link>
                     </div>
                 </section>

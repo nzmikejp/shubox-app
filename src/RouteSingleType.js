@@ -1,38 +1,46 @@
 import React, { Component } from 'react'
 import Listing from './Listing'
-import { Link } from '@reach/router'
 import API from './API'
 
-class Listings extends Component {
+class RouteSingleType extends Component {
     constructor(props){
         super(props)
 
-        this.state = { 
-            listings: []
+        this.state = {
+            type: null,
         }
     }
 
-    loadListings = () => {
-        API.getListings().then(res => {
-        this.setState({listings:res.data})
-      })
-    }
+    loadType = () => {
+        var {id} = this.props
+        API.getSingleType(id).then(res => this.setState({type:res.data}))
+      }
     
-    componentDidMount(){
-      this.loadListings();
-    }
+      componentDidMount(){
+        this.loadType()
+      }
+    
+      componentDidUpdate(prevProps, prevState){
+        var {id} = this.props
+    
+        if(id != prevProps.id){
+          this.loadType()
+        }
+      }
 
     render(){
-        return(
+        var { type } = this.state
+
+        return type ? (
             <main>
                 <section className="section route-listings">
                     <div className="container">
                         {
-                            this.state.listings.map((listing) => {
+                            type.listings.map((listing) => {
                                 var props = {
                                     key: listing.id,
                                     ...listing,
-                                    loadListings: this.loadListings
+                                    loadListings: this.loadType
                                 }
                                 return (<Listing {...props} />)
                             })
@@ -40,8 +48,8 @@ class Listings extends Component {
                     </div>
                 </section>
             </main>
-        )
+        ) : null
     }
 }
 
-export default Listings
+export default RouteSingleType
