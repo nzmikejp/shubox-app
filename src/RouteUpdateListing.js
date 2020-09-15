@@ -6,14 +6,14 @@ class RouteUpdateListing extends Component {
     constructor(props){
         super(props)
         this.state = {
-            listing:{}
+            listing:[]
         }
     }
 
     componentDidMount(){
         var {id} = this.props;
         API.getSingleListing(id).then(res => {
-            this.setStatee({listing:res.data})
+            this.setState({listing:res.data})
         })
     }
 
@@ -44,23 +44,23 @@ class RouteUpdateListing extends Component {
                     </div>
                     <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}} className="pure-form pure-form-stacked">
                         <div className="form-group">
-                            <label for="brand">Brand:</label>
+                            <label htmlFor="brand">Brand:</label>
                             <input type="text" name="brand" id="brand" placeholder="Enter your brand name"/>
                         </div>
                         <div className="form-group">
-                            <label for="shoe-style">Shoe style name:</label>
+                            <label htmlFor="shoe-style">Shoe style name:</label>
                             <input type="text" name="shoe-style" id="shoe-style" placeholder="Enter a style name"/>
                         </div>
                         <div className="form-group">
-                            <label for="price">Price:</label>
+                            <label htmlFor="price">Price:</label>
                             <input type="text" name="price" id="price" placeholder="Enter your price"/>
                         </div>
                         <div className="form-group">
-                            <label for="photo">Photo:</label>
+                            <label htmlFor="photo">Photo:</label>
                             <input type="file" name="photo" id="photo"/>
                         </div>
                         <div className="form-group">
-                            <label for="shoe-type">Shoe Type:</label>
+                            <label htmlFor="shoe-type">Shoe Type:</label>
                             <select name="shoe-type" id="shoe-type">
                                 <option value="1">Sneakers</option>
                                 <option value="2">Runners</option>
@@ -79,7 +79,7 @@ class RouteUpdateListing extends Component {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label for="description">Description:</label>
+                            <label htmlFor="description">Description:</label>
                             <textarea name="description" id="" cols="32" rows="5" placeholder="Enter your description"></textarea>
                         </div>
                         <div className="form-group with-btn">

@@ -12,20 +12,23 @@ class RouteAddListing extends Component {
 
         var formData = new FormData(this.form)
 
-        API.uploadFile(formData)
-        .then(res => res.data)
-        .then(fileName => {
-            var {currentUser} = this.props;
-            var data = {
-                brand:formData.get('brand'),
-                shoes_style:formData.get('shoe-style'),
-                price:formData.get('price'),
-                photo: fileName,
-                type_id:formData.get('type-input'),
-                user_id:currentUser.id
-            }
-            API.addListing(data).then(res => navigate('/listings'))
-        })
+        // API.uploadFile(formData)
+        // .then(res => res.data)
+        // .then(fileName => {
+        //     var {currentUser} = this.props;
+            
+        // })
+
+        var data = {
+            brand:formData.get('brand'),
+            name:formData.get('name'),
+            price:formData.get('price'),
+            description:formData.get('description'),
+            // photo: fileName,
+            type_id:formData.get('type-input'),
+            // user_id:currentUser.id
+        }
+        API.addListing(data).then(res => navigate('/listings'))
     }
 
     render(){
@@ -41,8 +44,8 @@ class RouteAddListing extends Component {
                             <input type="text" name="brand" id="brand" placeholder="Enter your brand name" />
                         </div>
                         <div className="form-group">
-                            <label for="shoe-style">Shoe style name:</label>
-                            <input type="text" name="shoe-style" id="shoe-style" placeholder="Enter a style name" />
+                            <label for="name">Shoe name:</label>
+                            <input type="text" name="name" id="name" placeholder="Enter a name" />
                         </div>
                         <div className="form-group">
                             <label for="price">Price:</label>

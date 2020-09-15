@@ -19,10 +19,6 @@ class App extends Component {
     }
   }
 
-  setHasFooter = (state) => {
-    this.setState({hasFooter:state})
-  }
-
   render(){
     return (
       <div className="App">
