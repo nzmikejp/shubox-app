@@ -305,10 +305,12 @@
             color: $dark-gray;
             margin: 0;
             padding-top: 0.5em;
+            text-transform: capitalize;
         }
-
+        
         h2 {
             margin: 0;
+            text-transform: capitalize;
         }
     }
 

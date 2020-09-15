@@ -176,6 +176,7 @@
 
 .profile-user {
     margin: 0;
+    text-transform: capitalize;
 }
 
 
@@ -279,6 +280,11 @@
     font-weight: $font-bold;
     margin: 2.7em;
     letter-spacing: 0.2px;
+    text-align: center;
+    background-color: $red-accent;
+    padding: 1em;
+    border-radius: $s-border-radius;
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.7);
 }
 
 .footer {
@@ -323,6 +329,7 @@
             padding-left: 1em;
             color: $light-color;
             font-size: 0.7em;
+            text-transform: capitalize;
 
             span {
                 font-weight: $font-bold;

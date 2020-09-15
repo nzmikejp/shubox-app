@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
+import API from './API'
 
 class UserListing extends Component {
 
     render() {
         var {brand, name, description, price, photo, category, id} = this.props
-        var photoPath = '/images/'+photo+'.png'
+        console.log(photo)
+        var photoPath = '/images/fallback.png'
         var pricePrefix = '$'+price
 
         return (
@@ -26,7 +28,7 @@ class UserListing extends Component {
                     </div>
                 </div>
                 <div className="listing-image">
-                    <img src={photoPath} alt="" />
+                    <img src={photo ? API.serverUrl+photo : photoPath} alt="" />
                 </div>
                 <div className="listing-btns">
                     <div className="btn-round-s btn-gray">

@@ -27,7 +27,7 @@ class RouteListingDescription extends Component {
         var {brand, name, description, price, photo, category, id} = listing
         var photoPath = '/images/'+photo+'.png'
         var pricePrefix = '$'+price
-        console.log(listing)
+  
 
 
         return (
@@ -66,7 +66,7 @@ class RouteListingDescription extends Component {
                                     </div>
                                     <div className="profile-details">
                                         <p className="profile-title">Seller</p>
-                                        <p className="profile-user">Username</p>
+                                        <p className="profile-user">username</p>
                                     </div>
                                 </div>
                             </div>

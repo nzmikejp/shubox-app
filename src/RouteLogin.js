@@ -7,7 +7,7 @@ class RouteLogin extends Component {
         super(props)
 
         this.state = {
-            errorMessage: ''
+            errorMessage: null
         }
     }
 
@@ -30,7 +30,7 @@ class RouteLogin extends Component {
           if(user){
             setCurrentUser(user)
             localStorage.setItem('userId',user.id)
-            navigate('/types')
+            navigate('/user/profile')
           }else{
             this.setState({errorMessage:'Wrong username or password, please try again'})
           }
@@ -39,7 +39,10 @@ class RouteLogin extends Component {
       }
 
     render(){
+        var {errorMessage} = this.state
+
         return(
+
             <main>
                 <section className="section route-user-login">
                     <div className="container">
@@ -48,18 +51,18 @@ class RouteLogin extends Component {
                         <hr className="divider"/>
                         <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}} className="pure-form pure-form-stacked">
                             <div className="form-group">
-                                <label for="user-name">User Name:</label>
+                                <label htmlFor="user-name">User Name:</label>
                                 <input type="text" name="user-name" id="user-name" placeholder="Enter your username"/>
                             </div>
                             <div className="form-group">
-                                <label for="user-password">Password:</label>
+                                <label htmlFor="user-password">Password:</label>
                                 <input type="password" name="user-password" id="user-password" placeholder="Enter your password"/>
                             </div>
                             <div className="form-group with-btn">
                                 <button type="submit" className="btn btn-gray">Sign in</button>
                                 <Link to="/users/create" className="signup-link">dont’ have an account? no problem, sign up here</Link>
                             </div>
-                            <p className="form-message">{this.state.errorMessage}</p>
+                            {errorMessage ? (<p className="form-message">{errorMessage}</p>) : null}
                         </form>
                     </div>
                 </section>

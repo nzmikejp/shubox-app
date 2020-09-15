@@ -11,7 +11,7 @@ class RouteProfile extends Component {
     render(){
         var {currentUser} = this.props
         var {id, name, username, listings} = currentUser
-        console.log(listings)
+        console.log(currentUser)
         
         return(
             <main>
@@ -29,7 +29,7 @@ class RouteProfile extends Component {
                         </div>
                     </div>
                     <div className="container">
-                        <button className="btn btn-gray btn-noshadow">Create listing</button>
+                        <button className="btn btn-gray btn-noshadow" onClick={()=>{navigate('/listings/create')}}>Create listing</button>
                         <hr className="divider-dark" />
                         {
                             listings.map((listing)=>{

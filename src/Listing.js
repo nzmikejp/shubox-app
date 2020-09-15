@@ -30,7 +30,7 @@ class Listing extends Component {
                     </div>
                 </div>
                 <div className="listing-image">
-                    <img src={photoPath} alt="" />
+                    <img src={photoPath ? photoPath : '/images/fallback'} alt="" />
                 </div>
                 
             </div>

@@ -57,7 +57,7 @@ class App extends Component {
           <RouteSingleType path="types/:id" />
           <RouteListings path="listings" />
           <RouteListingDescription path="listing/:id/description" />
-          {currentUser ? <RouteAddListing path="listings/create" /> : null}
+          {currentUser ? <RouteAddListing path="listings/create" currentUser={currentUser} /> : null}
           {currentUser ? <RouteUpdateListing path="listings/:id/edit" /> : null}
           {currentUser ? <RouteProfile path="user/profile" currentUser={currentUser} /> : null}
           {currentUser ? <RouteUpdateUser path="users/:id/edit" handleLogout={this.handleLogout}/> : null}

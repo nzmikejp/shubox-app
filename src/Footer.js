@@ -8,15 +8,21 @@ class Footer extends Component {
 
     render(){
         var {currentUser} = this.props
+        console.log(currentUser)
 
         return(
             <footer className="footer active">
                 <div className="user-info">
                     <div className="user-profile">
-                        <div className="profile-image">
-                            <img src="/images/profile-image.png" alt="Profile Image"/>
-                        </div>
-                        <p><span>Welcome</span> Username</p>
+                        {currentUser ? (
+                            <>
+                            <div className="profile-image">
+                                <img src="/images/profile-image.png" alt="Profile Image"/>
+                            </div>
+                            <p><span>Welcome</span> username</p>
+                            </>
+                            ) : null
+                        }
                     </div>
                     <div className="logo">
                         <img src="/images/shu-logo-long.png" alt="Logo"/>
@@ -31,7 +37,7 @@ class Footer extends Component {
                     </Link>
                     {
                         currentUser ? (
-                            <Link to="user/profile"><i className="fas fa-user"></i></Link>
+                            <Link to="/user/profile"><i className="fas fa-user"></i></Link>
                         ) : (
                             <Link to="users/authenticate"><i className="fas fa-user"></i></Link>
                         )

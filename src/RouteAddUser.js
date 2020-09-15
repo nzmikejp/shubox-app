@@ -1,6 +1,25 @@
 import React, { Component } from 'react'
+import { navigate } from '@reach/router'
+import API from './API'
 
 class RouteAddUser extends Component {
+
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+    
+        var formData = new FormData(this.form);
+        var data = {
+          name:formData.get('name'),
+          username:formData.get('user-name'),
+          password:formData.get('user-password'),
+          email:formData.get('user-email'),
+        }
+    
+        API.addUser(data).then(res => navigate('/users/authenticate'))
+      
+      }
+
+
     render(){
         return(
             <main>
@@ -9,21 +28,21 @@ class RouteAddUser extends Component {
                         <img src="/images/shu-logo-small.png" alt="" />
                         <h1>Account Sign Up</h1>
                         <hr className="divider" />
-                        <form action="#" className="pure-form pure-form-stacked">
+                        <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}} className="pure-form pure-form-stacked">
                             <div className="form-group">
-                                <label for="name">Name:</label>
+                                <label htmlFor="name">Name:</label>
                                 <input type="text" name="name" id="name" placeholder="Enter your name" />
                             </div>
                             <div className="form-group">
-                                <label for="user-name">User Name:</label>
+                                <label htmlFor="user-name">User Name:</label>
                                 <input type="text" name="user-name" id="user-name" placeholder="Enter your username" />
                             </div>
                             <div className="form-group">
-                                <label for="user-email">Email:</label>
+                                <label htmlFor="user-email">Email:</label>
                                 <input type="text" name="user-email" id="user-email" placeholder="Enter your username" />
                             </div>
                             <div className="form-group">
-                                <label for="user-password">Password:</label>
+                                <label htmlFor="user-password">Password:</label>
                                 <input type="password" name="user-password" id="user-password" placeholder="Enter your password" />
                             </div>
                             <div className="form-group with-btn">

@@ -271,6 +271,7 @@ main {
 
 .profile-user {
   margin: 0;
+  text-transform: capitalize;
 }
 
 .divider {
@@ -390,6 +391,12 @@ main {
   font-weight: 700;
   margin: 2.7em;
   letter-spacing: 0.2px;
+  text-align: center;
+  background-color: #c50308;
+  padding: 1em;
+  border-radius: 0.31em;
+  -webkit-box-shadow: 0 0 2em rgba(0, 0, 0, 0.7);
+          box-shadow: 0 0 2em rgba(0, 0, 0, 0.7);
 }
 
 .footer {
@@ -453,6 +460,7 @@ main {
   padding-left: 1em;
   color: #fff;
   font-size: 0.7em;
+  text-transform: capitalize;
 }
 
 .footer .user-profile .profile-image + p span {
@@ -896,10 +904,12 @@ main {
   color: #414141;
   margin: 0;
   padding-top: 0.5em;
+  text-transform: capitalize;
 }
 
 .route-user .header h2 {
   margin: 0;
+  text-transform: capitalize;
 }
 
 .route-user .divider-dark {
