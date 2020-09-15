@@ -16,24 +16,44 @@ import './assets/css/style.css';
 import API from './API';
 
 class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      currentUser: null
+    }
+  }
+
+  setCurrentUser = (user) => {
+    this.setState({currentUser: user})
+  }
+
+  componentDidMount(){
+    var userId = localStorage.getItem('userId')
+    if(userId){
+      API.getSingleUser(userId).then(res => this.setState({currentUser:res.data}))
+    }
+  }
+
 
   render(){
     var footerRoutes = ['types', 'listings', 'listing/:id/description', 'listings/create', 'listings/:id/edit', 'user/profile', 'users/:id/edit', 'types/:id']
+    var {currentUser} = this.state
 
     return (
       <div className="App">
         <Router>
           <RouteWelcome path="/" />
-          <RouteLogin path="users/authenticate" />
+          <RouteLogin path="users/authenticate" setCurrentUser={this.setCurrentUser}/>
           <RouteAddUser path="users/create" />
           <RouteTypes path="types" />
           <RouteSingleType path="types/:id" />
           <RouteListings path="listings" />
           <RouteListingDescription path="listing/:id/description" />
-          <RouteAddListing path="listings/create" />
-          <RouteUpdateListing path="listings/:id/edit" />
-          <RouteProfile path="user/profile" />
-          <RouteUpdateUser path="users/:id/edit" />
+          {currentUser ? <RouteAddListing path="listings/create" /> : null}
+          {currentUser ? <RouteUpdateListing path="listings/:id/edit" /> : null}
+          {currentUser ? <RouteProfile path="user/profile" currentUser={currentUser} /> : null}
+          {currentUser ? <RouteUpdateUser path="users/:id/edit" /> : null}
           <RouteWelcome default />
         </Router>
         {
@@ -42,7 +62,7 @@ class App extends Component {
               <Match path={route}>
                 {props =>
                   props.match ? (
-                    <Footer />
+                    <Footer currentUser={currentUser}/>
                   ) : null
                 }
                 </Match>

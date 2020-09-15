@@ -7,6 +7,10 @@ class Footer extends Component {
     }
 
     render(){
+        var {currentUser} = this.props
+        // var {username} = currentUser
+        console.log(currentUser)
+
         return(
             <footer className="footer active">
                 <div className="user-info">
@@ -27,9 +31,13 @@ class Footer extends Component {
                     <Link to="listings">
                         <i className="fas fa-compass"></i>
                     </Link>
-                    <Link to="user/profile">
-                        <i className="fas fa-user"></i>
-                    </Link>
+                    {
+                        currentUser ? (
+                            <Link to="user/profile"><i className="fas fa-user"></i></Link>
+                        ) : (
+                            <Link to="users/authenticate"><i className="fas fa-user"></i></Link>
+                        )
+                    }
                 </div>
             </footer>
         )

@@ -272,6 +272,15 @@
     border-radius: $s-border-radius;
 }
 
+.form-message {
+    color: $light-color;
+    text-transform: uppercase;
+    font-size: 0.46em;
+    font-weight: $font-bold;
+    margin: 2.7em;
+    letter-spacing: 0.2px;
+}
+
 .footer {
     width: 100%;
     position: fixed;
