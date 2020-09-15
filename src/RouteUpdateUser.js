@@ -35,7 +35,7 @@ class RouteUpdateUser extends Component {
                             </div>
                         </form>
                         <hr className="divider-dark" />
-                        <button className="btn btn-gray">Log out</button>
+                        <button className="btn btn-gray" onClick={this.props.handleLogout}>Log out</button>
                     </div>
                 </section>
             </main>

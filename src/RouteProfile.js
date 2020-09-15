@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
-import Listing from './Listing'
+import UserListing from './UserListing'
 
 class RouteProfile extends Component {
     constructor(props){
@@ -10,8 +10,8 @@ class RouteProfile extends Component {
 
     render(){
         var {currentUser} = this.props
-        var {id, name, username} = currentUser
-        console.log(id)
+        var {id, name, username, listings} = currentUser
+        console.log(listings)
         
         return(
             <main>
@@ -31,7 +31,16 @@ class RouteProfile extends Component {
                     <div className="container">
                         <button className="btn btn-gray btn-noshadow">Create listing</button>
                         <hr className="divider-dark" />
-                        {/* <Listing/> */}
+                        {
+                            listings.map((listing)=>{
+                                var props = {
+                                    key: listing.id,
+                                    ...listing,
+                                    loadListings: this.loadListings
+                                }
+                                return (<UserListing {...props} />)
+                            })
+                        }
                         
                     </div>
                 </section>

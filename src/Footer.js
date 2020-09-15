@@ -8,8 +8,6 @@ class Footer extends Component {
 
     render(){
         var {currentUser} = this.props
-        // var {username} = currentUser
-        console.log(currentUser)
 
         return(
             <footer className="footer active">

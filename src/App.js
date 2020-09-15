@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Match } from "@reach/router"
+import { Router, Match, navigate } from "@reach/router"
 import RouteWelcome from './RouteWelcome'
 import RouteLogin from './RouteLogin'
 import RouteAddUser from './RouteAddUser'
@@ -35,6 +35,13 @@ class App extends Component {
     }
   }
 
+  handleLogout = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('userId')
+    this.setState({currentUser:null})
+    navigate('/')
+  }
+
 
   render(){
     var footerRoutes = ['types', 'listings', 'listing/:id/description', 'listings/create', 'listings/:id/edit', 'user/profile', 'users/:id/edit', 'types/:id']
@@ -53,7 +60,7 @@ class App extends Component {
           {currentUser ? <RouteAddListing path="listings/create" /> : null}
           {currentUser ? <RouteUpdateListing path="listings/:id/edit" /> : null}
           {currentUser ? <RouteProfile path="user/profile" currentUser={currentUser} /> : null}
-          {currentUser ? <RouteUpdateUser path="users/:id/edit" /> : null}
+          {currentUser ? <RouteUpdateUser path="users/:id/edit" handleLogout={this.handleLogout}/> : null}
           <RouteWelcome default />
         </Router>
         {

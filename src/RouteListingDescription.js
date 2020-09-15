@@ -8,10 +8,10 @@ class RouteListingDescription extends Component {
         super(props)
 
         this.state = {
-            listing: []
+            listing: {}
         }
     }
-
+    
     loadListing = () => {
         var {id} = this.props
         API.getSingleListing(id).then(res => this.setState({listing:res.data}))
@@ -23,10 +23,12 @@ class RouteListingDescription extends Component {
     
     render(){
         var { listing } = this.state
+        
         var {brand, name, description, price, photo, category, id} = listing
         var photoPath = '/images/'+photo+'.png'
         var pricePrefix = '$'+price
-        console.log(category)
+        console.log(listing)
+
 
         return (
             <main>

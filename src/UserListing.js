@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
-import API from './API'
 
-class Listing extends Component {
-    constructor(props) {
-        super(props)
-    }
+class UserListing extends Component {
 
     render() {
         var {brand, name, description, price, photo, category, id} = this.props
@@ -26,16 +22,23 @@ class Listing extends Component {
                         <div className="item-price">
                             <h1><span>Price</span>{pricePrefix}</h1>
                         </div>
-                        <p className="type-gender" style={{backgroundColor: category.color}}>{category.name}</p>
+                        {/* <p className="type-gender" style={{backgroundColor: category.color}}>{category.name}</p> */}
                     </div>
                 </div>
                 <div className="listing-image">
                     <img src={photoPath} alt="" />
                 </div>
-                
+                <div className="listing-btns">
+                    <div className="btn-round-s btn-gray">
+                        <i className="fas fa-pen btn-font-s"></i>
+                    </div>
+                    <div className="btn-round-s btn-red">
+                        <i className="fas fa-trash btn-font-s"></i>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
-export default Listing
+export default UserListing
