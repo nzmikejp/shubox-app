@@ -9,7 +9,7 @@ class Listing extends Component {
 
     render() {
         var {brand, name, description, price, photo, category, id} = this.props
-        var photoPath = '/images/'+photo+'.png'
+        var photoFallback = '/images/fallback.png'
         var pricePrefix = '$'+price
 
         return (
@@ -30,7 +30,7 @@ class Listing extends Component {
                     </div>
                 </div>
                 <div className="listing-image">
-                    <img src={photoPath ? photoPath : '/images/fallback'} alt="" />
+                    <img src={photo ? API.serverUrl+photo : photoFallback} alt="" />
                 </div>
                 
             </div>
