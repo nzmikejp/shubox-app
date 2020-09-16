@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
 import UserListing from './UserListing'
+import API from './API'
 
 class RouteProfile extends Component {
     constructor(props){
@@ -10,16 +11,16 @@ class RouteProfile extends Component {
 
     render(){
         var {currentUser} = this.props
-        var {id, name, username, listings} = currentUser
-        console.log(currentUser)
+        var {id, name, username, listings, photo} = currentUser
+        var photoFallback = '/images/user-fallback.png'
         
-        return(
+        return currentUser ? (
             <main>
                 <section className="section-scroll route-user">
                     <div className="header">
                         <div className="profile-image">
                             <div className="profile-image">
-                                <img src="/images/profile-image.png" alt="Profile Image" />
+                                <img src={photo ? API.serverUrl+photo : photoFallback} alt="Profile Image" />
                             </div>
                         </div>
                         <h1>{username}</h1>
@@ -45,7 +46,7 @@ class RouteProfile extends Component {
                     </div>
                 </section>
             </main>
-        )
+        ):null
     }
 }
 

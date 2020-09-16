@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from '@reach/router'
+import API from './API'
 
 class Footer extends Component {
     constructor(props){
@@ -8,7 +9,7 @@ class Footer extends Component {
 
     render(){
         var {currentUser} = this.props
-        console.log(currentUser)
+        var photoFallback = '/images/user-fallback.png'
 
         return(
             <footer className="footer active">
@@ -17,9 +18,9 @@ class Footer extends Component {
                         {currentUser ? (
                             <>
                             <div className="profile-image">
-                                <img src="/images/profile-image.png" alt="Profile Image"/>
+                                <img src={currentUser.photo ? API.serverUrl+currentUser.photo : photoFallback} alt="Profile Image"/>
                             </div>
-                            <p><span>Welcome</span> username</p>
+                        <p><span>Welcome</span> {currentUser.name}</p>
                             </>
                             ) : null
                         }

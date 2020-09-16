@@ -23,18 +23,18 @@ class RouteListingDescription extends Component {
     
     render(){
         var { listing } = this.state
-        
-        var {brand, name, description, price, photo, category, id} = listing
-        var photoPath = '/images/'+photo+'.png'
+        var {brand, name, description, price, photo, category, user} = listing
+        var photoFallback = '/images/fallback.png'
+        var userFallback = '/images/user-fallback.png'
         var pricePrefix = '$'+price
   
 
 
-        return (
+        return category ? (
             <main>
                 <section className="section-scroll route-listing">
                     <div className="description-image">
-                        <img src={photoPath} alt="" />
+                        <img src={photo ? API.serverUrl+photo : photoFallback} alt="" />
                         <div className="btn-gray btn-round-l btn-back" onClick={()=>{navigate('/listings')}}>
                             <i className="fas fa-chevron-left"></i>
                         </div>
@@ -46,7 +46,7 @@ class RouteListingDescription extends Component {
                                     <h1>{brand}</h1>
                                     <h2>{name}</h2>
                                 </div>
-                                <p className="type-gender">unisex</p>
+                                <p className="type-gender" style={{backgroundColor: category.color}}>{category.name}</p>
                             </div>
                             <div className="description-body">
                                 <p>
@@ -62,11 +62,11 @@ class RouteListingDescription extends Component {
                                 </div>
                                 <div className="description-seller">
                                     <div className="profile-image">
-                                        <img src="/images/profile-image.png" alt="Profile Image" />
+                                        <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="Profile Image" />
                                     </div>
                                     <div className="profile-details">
                                         <p className="profile-title">Seller</p>
-                                        <p className="profile-user">username</p>
+                                        <p className="profile-user">{user.username}</p>
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ class RouteListingDescription extends Component {
                                 <div className="description-comment-dialogue">
                                     <div className="dialogue-comment">
                                         <div className="profile-image">
-                                            <img src="/images/profile-image.png" alt="Profile Image" />
+                                            <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="Profile Image" />
                                         </div>
                                         <p className="profile-comment">
                                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, quos autem veniam facere harum, nostrum minima tempore incidunt praesentium atque velit magnam possimus. Quas saepe quod magni
@@ -95,7 +95,7 @@ class RouteListingDescription extends Component {
                                     </div>
                                     <div className="dialogue-comment">
                                         <div className="profile-image">
-                                            <img src="/images/profile-image.png" alt="Profile Image" />
+                                            <img src={ user.photo ? API.serverUrl+user.photo : userFallback} alt="Profile Image" />
                                         </div>
                                         <p className="profile-comment">
                                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, quos autem veniam facere harum, nostrum minima tempore incidunt praesentium atque velit magnam possimus. Quas saepe quod magni
@@ -110,7 +110,7 @@ class RouteListingDescription extends Component {
                     </div>
                 </section>
             </main>
-        )
+        ):null
     }
 }
 

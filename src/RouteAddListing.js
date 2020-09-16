@@ -8,26 +8,54 @@ class RouteAddListing extends Component {
         e.preventDefault()
 
         var formData = new FormData(this.form)
+        var { currentUser,loadCurrentUser } = this.props;
+ 
+        if(formData.get('photo').size > 0){
 
-        API.uploadFile(formData)
-        .then(res => res.data)
+            API.uploadFile(formData)
+            .then(res => res.data)
+    
+            .then(fileName => {
+                
+                var data = {
+                    brand: formData.get('brand'),
+                    name: formData.get('shoe-style'),
+                    description: formData.get('description'),
+                    price: formData.get('price'),
+                    photo: fileName,
+                    type_id: formData.get('shoe-type'),
+                    category_id: formData.get('category'),
+                    user_id: currentUser.id
+                }
+    
+                API.addListing(data).then(res => {
+                    loadCurrentUser()
+                    navigate('/user/profile')
+                })
+    
+            })
 
-        .then(fileName => {
-            var { currentUser } = this.props;
+        }else{
+
+
             var data = {
                 brand: formData.get('brand'),
                 name: formData.get('shoe-style'),
                 description: formData.get('description'),
                 price: formData.get('price'),
-                photo: fileName,
+                photo: '',
                 type_id: formData.get('shoe-type'),
                 category_id: formData.get('category'),
                 user_id: currentUser.id
             }
 
-            API.addListing(data).then(res => navigate('/user/profile'))
+            API.addListing(data).then(res => {
+                loadCurrentUser()
+                navigate('/user/profile')
+            })
 
-        })
+        }
+
     }
 
     render(){

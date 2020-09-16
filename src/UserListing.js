@@ -6,7 +6,7 @@ class UserListing extends Component {
 
     render() {
         var {brand, name, description, price, photo, category, id} = this.props
-        console.log(photo)
+
         var photoFallback = '/images/fallback.png'
         var pricePrefix = '$'+price
 
@@ -24,7 +24,7 @@ class UserListing extends Component {
                         <div className="item-price">
                             <h1><span>Price</span>{pricePrefix}</h1>
                         </div>
-                        {/* <p className="type-gender" style={{backgroundColor: category.color}}>{category.name}</p> */}
+                        <p className="type-gender" style={{backgroundColor: category.color}}>{category.name}</p>
                     </div>
                 </div>
                 <div className="listing-image">

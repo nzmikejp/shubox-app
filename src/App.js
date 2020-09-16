@@ -29,6 +29,10 @@ class App extends Component {
   }
 
   componentDidMount(){
+    this.loadCurrentUser()
+  }
+
+  loadCurrentUser = () =>{
     var userId = localStorage.getItem('userId')
     if(userId){
       API.getSingleUser(userId).then(res => this.setState({currentUser:res.data}))
@@ -57,7 +61,7 @@ class App extends Component {
           <RouteSingleType path="types/:id" />
           <RouteListings path="listings" />
           <RouteListingDescription path="listing/:id/description" />
-          {currentUser ? <RouteAddListing path="listings/create" currentUser={currentUser} /> : null}
+          {currentUser ? <RouteAddListing path="listings/create" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser}/> : null}
           {currentUser ? <RouteUpdateListing path="listings/:id/edit" /> : null}
           {currentUser ? <RouteProfile path="user/profile" currentUser={currentUser} /> : null}
           {currentUser ? <RouteUpdateUser path="users/:id/edit" handleLogout={this.handleLogout}/> : null}
