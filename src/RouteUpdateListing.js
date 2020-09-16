@@ -22,18 +22,40 @@ class RouteUpdateListing extends Component {
 
         var formData = new FormData(this.form)
 
-        var data = {
-            brand:formData.get('brand'),
-            name:formData.get('shoe-style'),
-            price:formData.get('price'),
-            // photo:formData.get('photo'),
-            type_id:formData.get('shoe-type'),
-            gender:formData.get('gender'),
-            description:formData.get('description')
+        if(formData.get('photo').size>0){
+            API.uploadFile(formData)
+            .then(res => res.data)
+
+            .then(fileName => {
+                var data = {
+                    brand:formData.get('brand'),
+                    name:formData.get('shoe-style'),
+                    price:formData.get('price'),
+                    photo:fileName,
+                    type_id:formData.get('shoe-type'),
+                    gender:formData.get('gender'),
+                    description:formData.get('description')
+                }
+        
+                var {id} = this.props
+                API.updateListing(id,data).then(res => navigate('/listings'))
+
+            })
+        }else{
+            var data = {
+                brand:formData.get('brand'),
+                name:formData.get('shoe-style'),
+                price:formData.get('price'),
+                // photo:fileName,
+                type_id:formData.get('shoe-type'),
+                gender:formData.get('gender'),
+                description:formData.get('description')
+            }
+    
+            var {id} = this.props
+            API.updateListing(id,data).then(res => navigate('/listings'))
         }
 
-        var {id} = this.props
-        API.updateListing(id,data).then(res => navigate('/listings'))
     }
 
     render(){
@@ -59,7 +81,7 @@ class RouteUpdateListing extends Component {
                         </div>
                         <div className="form-group">
                             <label for="photo">Photo:</label>
-                            <input type="text" name="photo" id="photo"/>
+                            <input type="file" name="photo" id="photo"/>
                         </div>
                         <div className="form-group">
                             <label for="shoe-type">Shoe Type:</label>

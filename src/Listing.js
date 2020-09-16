@@ -18,7 +18,9 @@ class Listing extends Component {
     render() {
         var {brand, name, description, price, gender, photo} = this.props
         // var photoPrefix = '/images/'+photo+'.png'
-        var photoPrefix = '/images/boots-1.png'
+        var photoPrefix = API.serverUrl
+        var pricePrefix = '$'+price
+        console.log(photo)
 
         return (
             <div className="listing-item">
@@ -32,13 +34,13 @@ class Listing extends Component {
                     </div>
                     <div className="listing-price">
                         <div className="item-price">
-                            <h1><span>Price</span>{price}</h1>
+                            <h1><span>Price</span>{pricePrefix}</h1>
                         </div>
                         <p className="type-gender">{gender}</p>
                     </div>
                 </div>
                 <div className="listing-image">
-                    <img src={photoPrefix} alt=""/>
+                    <img src={photoPrefix+photo} alt=""/>
                 </div>
                 <div className="listing-btns">
                     <div className="btn-round-s btn-gray">

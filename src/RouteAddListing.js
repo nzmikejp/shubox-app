@@ -8,17 +8,24 @@ class RouteAddListing extends Component {
         e.preventDefault()
         var formData = new FormData(this.form);
 
-        var data = {
-            brand:formData.get('brand'),
-            name:formData.get('shoe-style'),
-            price:formData.get('price'),
-            // photo:formData.get('photo'),
-            type_id:formData.get('shoe-type'),
-            gender:formData.get('gender'),
-            description:formData.get('description')
-        }
+        API.uploadFile(formData)
+        .then(res => res.data)
 
-        API.addListing(data).then(res => navigate('/listings'))
+        .then(fileName => {
+            var data = {
+                brand:formData.get('brand'),
+                name:formData.get('shoe-style'),
+                price:formData.get('price'),
+                photo:fileName,
+                type_id:formData.get('shoe-type'),
+                gender:formData.get('gender'),
+                description:formData.get('description')
+            }
+    
+            API.addListing(data).then(res => navigate('/listings'))
+
+        })
+
     }
 
 
@@ -44,7 +51,7 @@ class RouteAddListing extends Component {
                         </div>
                         <div className="form-group">
                             <label for="photo">Photo:</label>
-                            <input type="text" name="photo" id="photo"/>
+                            <input type="file" name="photo" id="photo"/>
                         </div>
                         <div className="form-group">
                             <label for="shoe-type">Shoe Type:</label>
