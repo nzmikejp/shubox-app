@@ -21,6 +21,22 @@ class RouteListingDescription extends Component {
         this.loadListing()
     }
     
+    // handleCommentFormSubmit = (e)=>{
+
+    //     var formData = ...;
+    //     var data = {
+    //         content: formData.get('user-comments'),
+    //         user_id: currentUser.id
+    //         listing_id:this.props.id
+    //     }
+
+    //     API.addComment(data).then(res => {
+    //         // loadCurrentUser()
+    //         // navigate('/user/profile')
+    //     })
+
+    // }
+    
     render(){
         var { listing } = this.state
         var {brand, name, description, price, photo, category, user} = listing
