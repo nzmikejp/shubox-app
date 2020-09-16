@@ -3,9 +3,6 @@ import { navigate } from '@reach/router'
 import API from './API'
 
 class Listing extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         var {brand, name, description, price, photo, category, id} = this.props
@@ -13,8 +10,8 @@ class Listing extends Component {
         var pricePrefix = '$'+price
 
         return (
-            <div className="listing-item" onClick={()=>{navigate('/listing/'+id+'/description')}}>
-                <div className="listing-description">
+            <div className="listing-item" >
+                <div className="listing-description" onClick={()=>{navigate('/listing/'+id+'/description')}}>
                     <div className="listing-info">
                         <h1>{brand}</h1>
                         <h2>{name}</h2>

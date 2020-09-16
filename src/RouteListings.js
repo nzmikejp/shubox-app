@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Listing from './Listing'
-import { Link } from '@reach/router'
 import API from './API'
 
 class Listings extends Component {

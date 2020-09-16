@@ -18,7 +18,7 @@ class UserListing extends Component {
 
         return (
             <div className="listing-item">
-                <div className="listing-description">
+                <div className="listing-description" onClick={()=>{navigate('/listing/'+id+'/description')}}>
                     <div className="listing-info">
                         <h1>{brand}</h1>
                         <h2>{name}</h2>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { navigate, Link } from '@reach/router'
+import { navigate } from '@reach/router'
 import API from './API'
 
 class RouteAddListing extends Component {

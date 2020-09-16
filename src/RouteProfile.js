@@ -4,10 +4,6 @@ import UserListing from './UserListing'
 import API from './API'
 
 class RouteProfile extends Component {
-    constructor(props){
-        super(props)
-
-    }
 
     render(){
         var {currentUser, loadCurrentUser} = this.props
