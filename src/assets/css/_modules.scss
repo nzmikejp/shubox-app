@@ -3,7 +3,7 @@
     text-transform: uppercase;
     font-weight: $font-bold;
     color: $light-color;
-    font-size: 1em;
+    font-size: 0.8em;
     border-radius: $s-border-radius;
     border: none;
     box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.5);
@@ -294,7 +294,6 @@
     left: 0;
     background-color: $red-accent;
     border-radius: $l-border-radius-top;
-    display: none;
     
     
     .user-info {
@@ -349,7 +348,7 @@
     }
 
     .nav {
-       height: 5.56em;
+       height: 4.56em;
        background-image: $red-gradient;
        box-shadow: $box-shadow-top;
        border-radius: $l-border-radius-top;
@@ -360,13 +359,9 @@
 
        i {
            color: $light-color;
-           font-size: 1.93em;
+           font-size: 1.6em;
        }
     }
 
 
-}
-
-.footer.active {
-    display: block;
 }

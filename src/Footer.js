@@ -12,7 +12,7 @@ class Footer extends Component {
         var photoFallback = '/images/user-fallback.png'
 
         return(
-            <footer className="footer active">
+            <footer className="footer">
                 <div className="user-info">
                     <div className="user-profile">
                         {currentUser ? (

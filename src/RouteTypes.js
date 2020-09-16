@@ -25,7 +25,7 @@ class RouteTypes extends Component {
 
         return(
             <main>
-                <section className="section route-types">
+                <section className="section-scroll route-types">
                 {
                     this.state.types.map((type) => {
                         var props = {

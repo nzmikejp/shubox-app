@@ -4,14 +4,21 @@ import API from './API'
 
 class UserListing extends Component {
 
+    handleDelete = () => {
+        var {id, loadCurrentUser} = this.props
+        API.deleteListing(id).then(res => {
+            loadCurrentUser()
+        })
+    }
+
     render() {
-        var {brand, name, description, price, photo, category, id} = this.props
+        var {brand, name, description, price, photo, category, id,} = this.props
 
         var photoFallback = '/images/fallback.png'
         var pricePrefix = '$'+price
 
         return (
-            <div className="listing-item" onClick={()=>{navigate('/listing/'+id+'/description')}}>
+            <div className="listing-item">
                 <div className="listing-description">
                     <div className="listing-info">
                         <h1>{brand}</h1>
@@ -34,7 +41,7 @@ class UserListing extends Component {
                     <div className="btn-round-s btn-gray">
                         <i className="fas fa-pen btn-font-s"></i>
                     </div>
-                    <div className="btn-round-s btn-red">
+                    <div className="btn-round-s btn-red" onClick={this.handleDelete}>
                         <i className="fas fa-trash btn-font-s"></i>
                     </div>
                 </div>

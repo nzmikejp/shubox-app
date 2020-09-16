@@ -10,7 +10,7 @@ class RouteProfile extends Component {
     }
 
     render(){
-        var {currentUser} = this.props
+        var {currentUser, loadCurrentUser} = this.props
         var {id, name, username, listings, photo} = currentUser
         var photoFallback = '/images/user-fallback.png'
         
@@ -37,7 +37,7 @@ class RouteProfile extends Component {
                                 var props = {
                                     key: listing.id,
                                     ...listing,
-                                    loadListings: this.loadListings
+                                    loadCurrentUser: loadCurrentUser
                                 }
                                 return (<UserListing {...props} />)
                             })
