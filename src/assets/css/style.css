@@ -673,6 +673,12 @@ main {
   position: relative;
 }
 
+.route-listing .header-btn{
+  border-bottom: thin red solid;
+  margin-bottom: 0.5em;
+  display: flex;
+}
+
 .route-listing .description-image {
   position: relative;
   z-index: 20;

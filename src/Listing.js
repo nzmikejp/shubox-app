@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
-import { Link } from '@reach/router'
+import { navigate } from '@reach/router'
 import API from './API'
 
 class Listing extends Component {
-    constructor(props){
-        super(props)
-    }
+    // constructor(props){
+    //     super(props)
+    // }
 
-    handleTrashBtn = () => {
+    deleteBtn = () => {
         var {id,loadListings} = this.props
         API.deleteListing(id)
         loadListings()
     }
 
+    editBtn = () => {
+        var {id} = this.props
+        navigate('listings/'+id+'/edit')
+    }
+
     render() {
-        var {id,brand,name,gender,price,description,photo,type_id} = this.props
-        var photoLink = '/images/'+photo+'.png'
+        var {id,brand,name,gender,price,description,photo} = this.props
+        // var photoLink = '/images/'+photo+'.png'
         var pricePath = '$'+price
 
         return (
@@ -36,14 +41,14 @@ class Listing extends Component {
                     </div>
                 </div>
                 <div className="listing-image">
-                    <img src={photoLink} alt="" />
+                    <img src={API.serverUrl + photo} alt="" />
                 </div>
                 <div className="listing-btns">
                     <div className="btn-round-s btn-gray">
-                        <Link to={'/listings/'+id+'/edit'}><i className="fas fa-pen btn-font-s"></i></Link>
+                        <i onClick={this.editBtn} className="fas fa-pen btn-font-s"></i>
                     </div>
                     <div className="btn-round-s btn-red">
-                        <i  className="fas fa-trash btn-font-s"></i>
+                        <i onClick={this.deleteBtn} className="fas fa-trash btn-font-s"></i>
                     </div>
                 </div>
             </div>

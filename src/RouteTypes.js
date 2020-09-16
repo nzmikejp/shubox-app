@@ -8,28 +8,7 @@ class RouteTypes extends Component {
         super(props)
 
         this.state = {
-            types: [
-                // {
-                //     id: 1,
-                //     name: "sneakers",
-                //     photo: "type-1"
-                // },
-                // {
-                //     id: 2,
-                //     name: "runners",
-                //     photo: "type-2"
-                // },
-                // {
-                //     id: 3,
-                //     name: "boots",
-                //     photo: "type-3"
-                // },
-                // {
-                //     id: 4,
-                //     name: "kids",
-                //     photo: "type-4"
-                // }
-            ]
+            types: []
         }
     }
 

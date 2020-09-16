@@ -3,13 +3,13 @@ import { Link } from '@reach/router'
 import API from './API'
 
 class Type extends Component {
-    constructor(props){
-        super(props)
-    }
+    // constructor(props){
+    //     super(props)
+    // }
 
     render() {
-        var { name, photo } = this.props
-        var photoLink = "/images/"+photo+".png"
+        var {name,photo} = this.props
+        // var photoLink = "/images/"+photo+".png"
 
         return (
             <div className="catergory">
@@ -17,7 +17,7 @@ class Type extends Component {
                     <h1>{name}</h1>
                 </div>
                 <div className="catergory-image">
-                    <img src={photoLink} alt="Sneaker" />
+                    <img src={API.serverUrl + photo} alt="" />
                 </div>
             </div>
         )

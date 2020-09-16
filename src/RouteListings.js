@@ -15,6 +15,7 @@ class Listings extends Component {
     loadListings = () => {
         API.getListings().then(res => {
             this.setState({listings:res.data})
+            // console.log(res.data)
         })
     }
 
@@ -29,7 +30,7 @@ class Listings extends Component {
     render(){
         return(
             <section className="section route-listings">
-                <div className="header-container">
+                <div className="header-btn">
                     <header className="btn-flex">
                         <div className="btn-round-l btn-gray" onClick={this.addListing}>
                             <i className="fas fa-plus btn-font-s"></i>

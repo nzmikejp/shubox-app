@@ -118,6 +118,12 @@
 .route-listings {
     background-color: $light-color;
 
+    .header-btn{
+        border-bottom: thin red solid;
+        margin-bottom: 0.5em;
+        // display: flex;
+    }
+
     .container {
         min-height: 100%;
         display: flex;
