@@ -13,8 +13,7 @@ class UserListing extends Component {
 
     render() {
         var {brand, name, description, price, photo, category, id,} = this.props
-
-        var photoFallback = '/images/fallback.png'
+        var photoFallback = '/images/fallback.svg'
         var pricePrefix = '$'+price
 
         return (
@@ -38,7 +37,7 @@ class UserListing extends Component {
                     <img src={photo ? API.serverUrl+photo : photoFallback} alt="" />
                 </div>
                 <div className="listing-btns">
-                    <div className="btn-round-s btn-gray">
+                    <div className="btn-round-s btn-gray" onClick={()=>{navigate('/listings/'+id+'/edit')}}>
                         <i className="fas fa-pen btn-font-s"></i>
                     </div>
                     <div className="btn-round-s btn-red" onClick={this.handleDelete}>

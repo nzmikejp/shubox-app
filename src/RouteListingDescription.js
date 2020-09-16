@@ -40,7 +40,7 @@ class RouteListingDescription extends Component {
     render(){
         var { listing } = this.state
         var {brand, name, description, price, photo, category, user} = listing
-        var photoFallback = '/images/fallback.png'
+        var photoFallback = '/images/fallback.svg'
         var userFallback = '/images/user-fallback.png'
         var pricePrefix = '$'+price
   

@@ -9,7 +9,7 @@ class Listing extends Component {
 
     render() {
         var {brand, name, description, price, photo, category, id} = this.props
-        var photoFallback = '/images/fallback.png'
+        var photoFallback = '/images/fallback.svg'
         var pricePrefix = '$'+price
 
         return (
