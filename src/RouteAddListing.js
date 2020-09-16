@@ -9,22 +9,25 @@ class RouteAddListing extends Component {
 
         var formData = new FormData(this.form)
 
+        API.uploadFile(formData)
+            .then(res => res.data)
+
+            .then(fileName => {
                 var data = {
                     brand:formData.get('brand'),
                     name:formData.get('name'),
                     price:formData.get('price'),
-                    //photo: fileName,
+                    photo: fileName,
                     categorytype:formData.get('category-type'),
                     gender:formData.get('gender'),
                     description:formData.get('description')
                 }
                 API.addListing(data).then(res => navigate('/listings'))
+            })
     }
+
     
     render(){
-
-        console.log('hi')
-
         return(
             <section className="section-scroll route-create-listing">
                 <div className="container">

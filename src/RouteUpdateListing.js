@@ -37,7 +37,7 @@ class RouteUpdateListing extends Component {
         API.updateListing(id,data).then(res => navigate('/listings'))
     }   
 
-    render(){
+    render(){   
 
         var {brand, name, price, categorytype, gender, description} = this.state.listing
 

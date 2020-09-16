@@ -64,6 +64,10 @@ main {
   padding-bottom: 8.3em;
 }
 
+a {
+  text-decoration: none;
+}
+
 .btn {
   padding: 0.7em 0.85em;
   text-transform: uppercase;
