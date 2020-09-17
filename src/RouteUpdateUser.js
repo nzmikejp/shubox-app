@@ -60,13 +60,20 @@ class RouteUpdateUser extends Component {
             })
         }
     }
+
+    handleDelete = () => {
+        var {id,setCurrentUser} = this.props
+        API.deleteUser(id).then(res => {
+            localStorage.removeItem('userId')
+            setCurrentUser(null)
+            navigate('/')
+        })
+    }
     
 
     render(){
 
         var {name, username, password, email} = this.state.user
-        console.log(this.state.user)
-
 
         return(
             <main>
@@ -102,6 +109,8 @@ class RouteUpdateUser extends Component {
                         </form>
                         <hr className="divider-dark" />
                         <button className="btn btn-gray" onClick={this.props.handleLogout}>Log out</button>
+                        <hr className="divider-dark" />
+                        <button className="btn btn-red btn-small" onClick={this.handleDelete}>Delete Account</button>
                     </div>
                 </section>
             </main>

@@ -24,6 +24,14 @@ class App extends Component {
     }
   }
 
+  // setCurrentUser = (user,complete = null) => {
+  //   this.setState({currentUser: user},()=>{
+  //     if(complete != null){
+  //       complete()
+  //     }
+  //   })
+  // }
+
   setCurrentUser = (user) => {
     this.setState({currentUser: user})
   }
@@ -47,6 +55,8 @@ class App extends Component {
   }
 
 
+
+
   render(){
     var footerRoutes = ['types', 'listings', 'listing/:id/description', 'listings/create', 'listings/:id/edit', 'user/profile', 'users/:id/edit', 'types/:id']
     var {currentUser} = this.state
@@ -56,7 +66,7 @@ class App extends Component {
         <Router>
           <RouteWelcome path="/" />
           <RouteLogin path="users/authenticate" setCurrentUser={this.setCurrentUser}/>
-          <RouteAddUser path="users/create" />
+          <RouteAddUser path="users/create" setCurrentUser={this.setCurrentUser} />
           <RouteTypes path="types" />
           <RouteSingleType path="types/:id" />
           <RouteListings path="listings" />
@@ -64,7 +74,7 @@ class App extends Component {
           {currentUser ? <RouteAddListing path="listings/create" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser}/> : null}
           {currentUser ? <RouteUpdateListing path="listings/:id/edit" loadCurrentUser={this.loadCurrentUser} /> : null}
           {currentUser ? <RouteProfile path="user/profile" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser}/> : null}
-          {currentUser ? <RouteUpdateUser path="users/:id/edit" handleLogout={this.handleLogout} loadCurrentUser={this.loadCurrentUser}/> : null}
+          {currentUser ? <RouteUpdateUser path="users/:id/edit" handleLogout={this.handleLogout} loadCurrentUser={this.loadCurrentUser} setCurrentUser={this.setCurrentUser}/> : null}
           <RouteWelcome default />
         </Router>
         {

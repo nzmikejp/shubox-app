@@ -15,7 +15,13 @@ class RouteAddUser extends Component {
           email:formData.get('user-email'),
         }
     
-        API.addUser(data).then(res => navigate('/users/authenticate'))
+        API.addUser(data).then(res => {
+            var user = res.data
+            this.props.setCurrentUser(user)
+            localStorage.setItem('userId',user.id)
+            navigate('/user/profile')
+            
+        })
       
       }
 

@@ -78,7 +78,7 @@ class RouteListingDescription extends Component {
                                 </div>
                                 <div className="description-seller">
                                     <div className="profile-image">
-                                        <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="Profile Image" />
+                                        <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="" />
                                     </div>
                                     <div className="profile-details">
                                         <p className="profile-title">Seller</p>
@@ -100,7 +100,7 @@ class RouteListingDescription extends Component {
                                 <div className="description-comment-dialogue">
                                     <div className="dialogue-comment">
                                         <div className="profile-image">
-                                            <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="Profile Image" />
+                                            <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="" />
                                         </div>
                                         <p className="profile-comment">
                                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, quos autem veniam facere harum, nostrum minima tempore incidunt praesentium atque velit magnam possimus. Quas saepe quod magni
@@ -111,7 +111,7 @@ class RouteListingDescription extends Component {
                                     </div>
                                     <div className="dialogue-comment">
                                         <div className="profile-image">
-                                            <img src={ user.photo ? API.serverUrl+user.photo : userFallback} alt="Profile Image" />
+                                            <img src={ user.photo ? API.serverUrl+user.photo : userFallback} alt="" />
                                         </div>
                                         <p className="profile-comment">
                                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, quos autem veniam facere harum, nostrum minima tempore incidunt praesentium atque velit magnam possimus. Quas saepe quod magni
