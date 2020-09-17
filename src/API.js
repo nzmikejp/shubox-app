@@ -33,6 +33,9 @@ var API = {
     addUser : (data) => {
         return axios.post(urlPrefix+'/users',data)
     },
+    updateUser : (id,data) => {
+        return axios.put(urlPrefix+'/users/'+id,data)
+    },
     authenticate : (data) => {
         return axios.post(urlPrefix+'/users/authenticate',data)
     },

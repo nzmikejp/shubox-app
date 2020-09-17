@@ -54,7 +54,6 @@ class RouteUpdateListing extends Component {
                 name: formData.get('shoe-style'),
                 description: formData.get('description'),
                 price: formData.get('price'),
-                photo: '',
                 type_id: formData.get('shoe-type'),
                 category_id: formData.get('category'),
             }

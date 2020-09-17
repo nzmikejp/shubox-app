@@ -3,9 +3,6 @@ import { Link } from '@reach/router'
 import API from './API'
 
 class Footer extends Component {
-    constructor(props){
-        super(props)
-    }
 
     render(){
         var {currentUser} = this.props
@@ -18,7 +15,7 @@ class Footer extends Component {
                         {currentUser ? (
                             <>
                             <div className="profile-image">
-                                <img src={currentUser.photo ? API.serverUrl+currentUser.photo : photoFallback} alt="Profile Image"/>
+                                <img src={currentUser.photo ? API.serverUrl+currentUser.photo : photoFallback} alt=""/>
                             </div>
                         <p><span>Welcome</span> {currentUser.name}</p>
                             </>

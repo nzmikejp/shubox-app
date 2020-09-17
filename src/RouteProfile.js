@@ -16,7 +16,7 @@ class RouteProfile extends Component {
                     <div className="header">
                         <div className="profile-image">
                             <div className="profile-image">
-                                <img src={photo ? API.serverUrl+photo : photoFallback} alt="Profile Image" />
+                                <img src={photo ? API.serverUrl+photo : photoFallback} alt="" />
                             </div>
                         </div>
                         <h1>{username}</h1>
