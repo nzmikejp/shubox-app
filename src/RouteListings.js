@@ -32,11 +32,12 @@ class Listings extends Component {
             <section className="section route-listings">
                 <div className="header-btn">
                     <header className="btn-flex">
-                        <div className="btn-round-l btn-gray" onClick={this.addListing}>
+                        <div className="btn-round-l btn-red" onClick={this.addListing}>
                             <i className="fas fa-plus btn-font-s"></i>
                         </div>
-                        <span className="header-title">Add listing</span>
+                        
                     </header>
+                    <span className="header-title">Add listing</span>
                 </div>
                 <div className="container">
                     {

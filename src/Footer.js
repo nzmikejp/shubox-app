@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import API from './API'
 
 class Footer extends Component {
     constructor(props){
@@ -6,14 +7,22 @@ class Footer extends Component {
     }
 
     render(){
+        var {currentUser} = this.props
+        var avatar = '/images/profile-image.png'
+
         return(
             <footer className="footer active">
                 <div className="user-info">
                     <div className="user-profile">
-                        <div className="profile-image">
-                            <img src="/images/profile-image.png" alt="Profile Image"/>
-                        </div>
-                        <p><span>Welcome</span> Username</p>
+                        {currentUser ? (
+                            <>
+                            <div className="profile-image">
+                                <img src={currentUser.photo ? API.serverUrl+currentUser.photo : avatar} alt="Profile Image"/>
+                            </div>
+                            <p><span>Welcome</span>{currentUser.name}</p>
+                            </>
+                            ) : null
+                        }
                     </div>
                     <div className="logo">
                         <img src="/images/shu-logo-long.png" alt="Logo"/>

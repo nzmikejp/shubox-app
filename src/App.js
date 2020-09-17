@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Navigate, Link} from "@reach/router"
+import { Router, Match } from "@reach/router"
 import RouteLogin from './RouteLogin'
 import RouteSignup from './RouteSignup'
 import RouteTypes from './RouteTypes'
@@ -16,23 +16,54 @@ class App extends Component {
 
     this.state = {
       hasFooter: true,
+      currentUser: null
+    }
+  }
+
+  setCurrentUser = (user) => {
+    this.setState({currentUser:user})
+  }
+
+  componentDidMount(){
+
+
+    //local storage
+    var userId = localStorage.getItem('userId')
+    if(userId){
+      API.getSingleUser(userId).then(res => this.setState({currentUser:res.data}))
     }
   }
 
   render(){
+    var footer = ['types', 'listings']
+    var {currentUser} = this.state
     return (
-      <div className="App">
-        <main>
+      <div className="app">
+        {/* <main> */}
           <Router>
-            <RouteLogin path="/users/authenticate"/>
+            <RouteLogin setCurrentUser={this.setCurrentUser} path="/users/authenticate"/>
             <RouteSignup path="users/create"/>
-            <RouteTypes path="types"/>
-            <RouteListings path="listings"/>
+            {currentUser ? <RouteTypes path="types" currentUser={currentUser} setCurrentUser={this.setCurrentUser}/> : null}
+            {currentUser ? <RouteListings path="listings" currentUser={currentUser}/> : null}
             <RouteAddListing path="listings/create"/>
             <RouteUpdateListing path="listings/:id/edit"/>
             <RouteLogin default/>
           </Router>
-        </main>
+
+          {
+            footer.map(route => {
+              return(
+                <Match path={route}>
+                  {props => 
+                  props.match ? (
+                    <Footer/>
+                  ):null
+                }
+                </Match>
+              )
+            })
+          }
+        {/* </main> */}
       </div>
     );
   }

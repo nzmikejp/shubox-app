@@ -35,6 +35,22 @@
     color: $light-color;
 }
 
+.header-btn{
+    display: flex;
+    margin-top: 0.5em;
+    .btn-flex{
+        margin-left: 0.5em;
+        i{
+            flex: 0 0 30%;
+        }
+    }
+    
+    span{
+        transform: translateY(30%);
+        flex: 0 0 70%;
+    }
+}
+
 .btn-round-s {
     width: 1.8em;
     height: 1.8em;

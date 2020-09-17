@@ -9,13 +9,13 @@ class RouteAddListing extends Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault()
-
+        
         var formData = new FormData(this.form)
 
         API.uploadFile(formData)
         .then(res => res.data)
         .then(fileName => {
-            
+            var {currentUser} = this.props;
             var data = {
                 brand:formData.get('brand'),
                 name:formData.get('shoe_name'),

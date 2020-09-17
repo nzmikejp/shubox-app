@@ -17,7 +17,7 @@ class Type extends Component {
                     <h1>{name}</h1>
                 </div>
                 <div className="catergory-image">
-                    <img src={API.serverUrl + photo} alt="" />
+                    <img src={API.serverUrl + photo} alt=""/>
                 </div>
             </div>
         )
