@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
 
 class Footer extends Component {
-    constructor(props){
-        super(props)
-    }
-
+    
     render(){
         return(
             <footer className="footer active">
                 <div className="user-info">
                     <div className="user-profile">
                         <div className="profile-image">
-                            <img src="/images/profile-image.png" alt="Profile Image"/>
+                            <img src="/images/profile-image.png" alt=""/>
                         </div>
                         <p><span>Welcome</span> Username</p>
                     </div>
                     <div className="logo">
-                        <img src="/images/shu-logo-long.png" alt="Logo"/>
+                        <img src="/images/shu-logo-long.png" alt=""/>
                     </div>
                 </div>
                 <div className="nav">

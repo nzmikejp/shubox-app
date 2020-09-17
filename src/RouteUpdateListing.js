@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
 import API from './API'
-import Listing from './Listing';
 
 class RouteUpdateListing extends Component {
     
@@ -24,22 +23,40 @@ class RouteUpdateListing extends Component {
 
         var formData = new FormData(this.form)
 
-        var data = {
-            brand:formData.get('brand'),
-            name:formData.get('name'),
-            price:formData.get('price'),
-            //photo fileName,
-            categorytype:formData.get('category-type'),
-            gender:formData.get('gender'),
-            description:formData.get('description')
-        }
-        var {id} = this.props;
-        API.updateListing(id,data).then(res => navigate('/listings'))
-    }   
+        if(formData.get('photo').size > 0){
+
+            API.uploadFile(formData)
+            .then(res => res.data)
+
+            .then(fileName => {
+                var data = {
+                    brand:formData.get('brand'),
+                    name:formData.get('name'),
+                    price:formData.get('price'),
+                    photo: fileName,
+                    category_id:formData.get('gender'),
+                    description:formData.get('description')
+                }
+                var {id} = this.props;
+                API.updateListing(id,data).then(res => navigate('/listings'))
+            })
+        }else{
+                var data = {
+                    brand:formData.get('brand'),
+                    name:formData.get('name'),
+                    price:formData.get('price'),
+                    category_id:formData.get('gender'),
+                    description:formData.get('description')
+                }
+                var {id} = this.props;
+                API.updateListing(id,data).then(res => navigate('/listings'))
+            }
+
+        }   
 
     render(){   
 
-        var {brand, name, price, categorytype, gender, description} = this.state.listing
+        var {brand, name, price, gender, description, photo} = this.state.listing
 
         return(
             <section className="section-scroll route-update-listing">
@@ -62,25 +79,16 @@ class RouteUpdateListing extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="photo">Photo:</label>
-                            <input type="file" name="photo" id="photo"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="category-type">Category Type:</label>
-                            <select name="category-type" id="category-type" defaultValue={categorytype}>
-                                <option value="1">Sneakers</option>
-                                <option value="2">Runners</option>
-                                <option value="3">Boots</option>
-                                <option value="4">Kids</option>
-                            </select>
+                            <input type="file" name="photo" id="photo" defaultValue={photo}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="gender">Shoe Type:</label>
                             <select name="gender" id="gender" defaultValue={gender}>
-                                <option value="Mens">Mens</option>
-                                <option value="Womens">Womens</option>
-                                <option value="Unisex">Unisex</option>
-                                <option value="Kids Girls">Kids Girls</option>
-                                <option value="Kids Boys">Kids Boys</option>
+                                <option value="1">mens</option>
+                                <option value="2">womens</option>
+                                <option value="3">unisex</option>
+                                <option value="4">boys</option>
+                                <option value="5">girls</option>
                             </select>
                         </div>
                         <div className="form-group">

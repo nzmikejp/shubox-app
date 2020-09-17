@@ -5,12 +5,8 @@ import RouteAddListing from './RouteAddListing'
 import RouteUpdateListing from './RouteUpdateListing'
 import Footer from './Footer'
 import './assets/css/style.css';
-import API from './API';
 
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
 
   render(){
     return (

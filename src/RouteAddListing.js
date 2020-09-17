@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { navigate, Link, redirectTo } from '@reach/router'
+import { navigate } from '@reach/router'
 import API from './API'
 
 class RouteAddListing extends Component {
@@ -9,24 +9,37 @@ class RouteAddListing extends Component {
 
         var formData = new FormData(this.form)
 
-        API.uploadFile(formData)
-            .then(res => res.data)
+        if(formData.get('photo').size > 0){
 
-            .then(fileName => {
+                API.uploadFile(formData)
+                    .then(res => res.data)
+
+                    .then(fileName => {
+                        var data = {
+                            brand:formData.get('brand'),
+                            name:formData.get('name'),
+                            price:formData.get('price'),
+                            photo: fileName,
+                            description:formData.get('description'),
+                            category_id:formData.get('gender')
+                        }
+                        API.addListing(data).then(res => navigate('/listings'))
+                    })
+        
+        }else{
+            
                 var data = {
                     brand:formData.get('brand'),
                     name:formData.get('name'),
                     price:formData.get('price'),
-                    photo: fileName,
-                    categorytype:formData.get('category-type'),
-                    gender:formData.get('gender'),
-                    description:formData.get('description')
+                    photo:'',
+                    description:formData.get('description'),
+                    category_id:formData.get('gender')
                 }
                 API.addListing(data).then(res => navigate('/listings'))
-            })
+        }
     }
 
-    
     render(){
         return(
             <section className="section-scroll route-create-listing">
@@ -52,22 +65,13 @@ class RouteAddListing extends Component {
                             <input type="file" name="photo" id="photo" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="category-type">Category Type:</label>
-                            <select name="category-type" id="category-type">
-                                <option value="1">Sneakers</option>
-                                <option value="2">Runners</option>
-                                <option value="3">Boots</option>
-                                <option value="4">Kids</option>
-                            </select>
-                        </div>
-                        <div className="form-group">
                             <label htmlFor="gender">Shoe Type:</label>
                             <select name="gender" id="gender">
-                                <option value="Mens">Mens</option>
-                                <option value="Womens">Womens</option>
-                                <option value="Unisex">Unisex</option>
-                                <option value="Kids Girls">Kids Girls</option>
-                                <option value="Kids Boys">Kids Boys</option>
+                                <option value="1">mens</option>
+                                <option value="2">womens</option>
+                                <option value="3">unisex</option>
+                                <option value="4">boys</option>
+                                <option value="5">girls</option>
                             </select>
                         </div>
                         <div className="form-group">
