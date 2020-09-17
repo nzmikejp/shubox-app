@@ -70,7 +70,7 @@ class App extends Component {
         {
           footerRoutes.map(route => {
             return (
-              <Match path={route}>
+              <Match path={route} key={route}>
                 {props =>
                   props.match ? (
                     <Footer currentUser={currentUser}/>
