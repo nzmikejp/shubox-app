@@ -12,6 +12,7 @@ class RouteListingDescription extends Component {
             listing: {},
             comments: [
                 {
+                    id: 1,
                     content: 'this is a test message',
                     user_id: 1,
                     listing_id: 1
@@ -50,7 +51,8 @@ class RouteListingDescription extends Component {
         var { brand, name, description, price, photo, category, user } = listing
         var photoFallback = '/images/fallback.svg'
         var userFallback = '/images/user-fallback.png'
-        var pricePrefix = '$'+price  
+        var pricePrefix = '$'+price 
+        console.log(listing) 
 
         return category ? (
             <main>

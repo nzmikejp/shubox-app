@@ -57,7 +57,7 @@ var API = {
     addComment : (data) => {
         return axios.post(urlPrefix+'/comments',data)
     },
-    deleteUser : (id) => {
+    deleteComment : (id) => {
         return axios.delete(urlPrefix+'/comments/'+id)
     },
     uploadFile : (formData) => {

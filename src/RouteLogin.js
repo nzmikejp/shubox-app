@@ -45,10 +45,9 @@ class RouteLogin extends Component {
         return(
 
             <Spring
-                from={{ opacity: 0, transform:'translateX(100vw)' }}
-                to={{ opacity: 1, transform:'translateX(0vh)' }}
-                config={{duration: 1000}}
-                >
+                from={{ opacity: 0}}
+                to={{ opacity: 1}}
+                config={{duration: 500}}>
                 {props => (
                     <main style={props}>
                         <section className="section route-user-login">
