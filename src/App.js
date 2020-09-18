@@ -24,13 +24,6 @@ class App extends Component {
     }
   }
 
-  // setCurrentUser = (user,complete = null) => {
-  //   this.setState({currentUser: user},()=>{
-  //     if(complete != null){
-  //       complete()
-  //     }
-  //   })
-  // }
 
   setCurrentUser = (user) => {
     this.setState({currentUser: user})
@@ -70,7 +63,7 @@ class App extends Component {
           <RouteTypes path="types" />
           <RouteSingleType path="types/:id" />
           <RouteListings path="listings" />
-          <RouteListingDescription path="listing/:id/description" />
+          <RouteListingDescription path="listing/:id/description" loadCurrentUser={this.loadCurrentUser}/>
           {currentUser ? <RouteAddListing path="listings/create" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser}/> : null}
           {currentUser ? <RouteUpdateListing path="listings/:id/edit" loadCurrentUser={this.loadCurrentUser} /> : null}
           {currentUser ? <RouteProfile path="user/profile" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser}/> : null}

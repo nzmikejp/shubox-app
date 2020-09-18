@@ -48,6 +48,18 @@ var API = {
     getSingleCategories : (id) => {
         return axios.get(urlPrefix+'/categories/'+id)
     },
+    getComments : () => {
+        return axios.get(urlPrefix+'/comments')
+    },
+    getSingleComment : (id) => {
+        return axios.get(urlPrefix+'/comments/'+id)
+    },
+    addComment : (data) => {
+        return axios.post(urlPrefix+'/comments',data)
+    },
+    deleteUser : (id) => {
+        return axios.delete(urlPrefix+'/comments/'+id)
+    },
     uploadFile : (formData) => {
         var settings = {headers: {'Content-Type': 'multipart/form-data'}}
         return axios.post(urlPrefix+'/upload',formData,settings)

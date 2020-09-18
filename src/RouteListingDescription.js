@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
+import Comment from './Comment'
 import API from './API'
 
 
@@ -8,7 +9,14 @@ class RouteListingDescription extends Component {
         super(props)
 
         this.state = {
-            listing: {}
+            listing: {},
+            comments: [
+                {
+                    content: 'this is a test message',
+                    user_id: 1,
+                    listing_id: 1
+                }
+            ]
         }
     }
     
@@ -21,30 +29,28 @@ class RouteListingDescription extends Component {
         this.loadListing()
     }
     
-    // handleCommentFormSubmit = (e)=>{
+    handleCommentFormSubmit = (e)=>{
+        e.preventDefault()
+        var { currentUser, id, loadCurrentUser } = this.props
+        var formData = new FormData(this.form)
+        var data = {
+            content: formData.get('user-comments'),
+            user_id: currentUser.id,
+            listing_id: id
+        }
 
-    //     var formData = ...;
-    //     var data = {
-    //         content: formData.get('user-comments'),
-    //         user_id: currentUser.id
-    //         listing_id:this.props.id
-    //     }
+        API.addComment(data).then(res => {
+            loadCurrentUser()
+        })
 
-    //     API.addComment(data).then(res => {
-    //         // loadCurrentUser()
-    //         // navigate('/user/profile')
-    //     })
-
-    // }
+    }
     
     render(){
         var { listing } = this.state
-        var {brand, name, description, price, photo, category, user} = listing
+        var { brand, name, description, price, photo, category, user } = listing
         var photoFallback = '/images/fallback.svg'
         var userFallback = '/images/user-fallback.png'
-        var pricePrefix = '$'+price
-  
-
+        var pricePrefix = '$'+price  
 
         return category ? (
             <main>
@@ -89,7 +95,7 @@ class RouteListingDescription extends Component {
                             <hr className="divider-dark" />
                             <div className="description-comments">
                                 <h1>Comments & Questions</h1>
-                                <form action="#" className="pure-form">
+                                <form onSubmit={this.handleCommentFormSubmit} ref={(el) => {this.form = el}} className="pure-form">
                                     <div className="form-group">
                                         <input type="text" id="user-comments" name="user-comments" placeholder="Add a comment or question" />
                                         <button type="submit" className="btn-round-l btn-gray">
@@ -98,28 +104,18 @@ class RouteListingDescription extends Component {
                                     </div>
                                 </form>
                                 <div className="description-comment-dialogue">
-                                    <div className="dialogue-comment">
-                                        <div className="profile-image">
-                                            <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="" />
-                                        </div>
-                                        <p className="profile-comment">
-                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, quos autem veniam facere harum, nostrum minima tempore incidunt praesentium atque velit magnam possimus. Quas saepe quod magni
-                                    </p>
-                                        <div className="btn-round-s btn-red">
-                                            <i className="fas fa-trash btn-font-s"></i>
-                                        </div>
-                                    </div>
-                                    <div className="dialogue-comment">
-                                        <div className="profile-image">
-                                            <img src={ user.photo ? API.serverUrl+user.photo : userFallback} alt="" />
-                                        </div>
-                                        <p className="profile-comment">
-                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, quos autem veniam facere harum, nostrum minima tempore incidunt praesentium atque velit magnam possimus. Quas saepe quod magni
-                                    </p>
-                                        <div className="btn-round-s btn-red">
-                                            <i className="fas fa-trash btn-font-s"></i>
-                                        </div>
-                                    </div>
+                                    {
+                                        this.state.comments.map((comment)=>{
+                                            var props = {
+                                                key: comment.id,
+                                                ...comment,
+                                                loadListing: this.loadListing
+                                            }
+                                            return(
+                                                <Comment {...props}/>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </div>
                         </div>
