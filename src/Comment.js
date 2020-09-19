@@ -11,21 +11,22 @@ class Comment extends Component {
     }
 
     render(){
-        var { content } = this.props
+        var { content, user, currentUser } = this.props
+        console.log(currentUser)
         return(
             <div className="dialogue-comment">
                 <div className="profile-image">
-                    <img src="/images/user-fallback.png" alt="" />
+                    <img src={user.photo ? API.serverUrl+user.photo : "/images/user-fallback.png" }alt="" />
                 </div>
                 <p className="profile-comment">
                     {content}
                 </p>
-                {/* { listing user ? (
+                { user.id === currentUser ? (
                     <div className="btn-round-s btn-red" onClick={this.handleCommentDelete}>
                         <i className="fas fa-trash btn-font-s"></i>
                     </div>
                 ) : null
-                } */}
+                }
 
             </div>
         )

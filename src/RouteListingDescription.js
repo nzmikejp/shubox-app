@@ -10,14 +10,7 @@ class RouteListingDescription extends Component {
 
         this.state = {
             listing: {},
-            comments: [
-                {
-                    id: 1,
-                    content: 'this is a test message',
-                    user_id: 1,
-                    listing_id: 1
-                }
-            ]
+            comments: [],
         }
     }
     
@@ -25,14 +18,21 @@ class RouteListingDescription extends Component {
         var {id} = this.props
         API.getSingleListing(id).then(res => this.setState({listing:res.data}))
     }
+
+    loadComments = () => {
+        API.getComments().then(res => {
+        this.setState({comments:res.data})
+      })
+    }
     
     componentDidMount(){
         this.loadListing()
+        this.loadComments()
     }
     
     handleCommentFormSubmit = (e)=>{
         e.preventDefault()
-        var { currentUser, id, loadCurrentUser } = this.props
+        var { currentUser, id } = this.props
         var formData = new FormData(this.form)
         var data = {
             content: formData.get('user-comments'),
@@ -41,18 +41,18 @@ class RouteListingDescription extends Component {
         }
 
         API.addComment(data).then(res => {
-            loadCurrentUser()
+            this.loadComments()
         })
 
     }
     
     render(){
         var { listing } = this.state
-        var { brand, name, description, price, photo, category, user } = listing
+        var { currentUser } = this.props
+        var { brand, name, description, price, photo, category, user, id } = listing
         var photoFallback = '/images/fallback.svg'
         var userFallback = '/images/user-fallback.png'
         var pricePrefix = '$'+price 
-        console.log(listing) 
 
         return category ? (
             <main>
@@ -96,7 +96,7 @@ class RouteListingDescription extends Component {
                             </div>
                             <hr className="divider-dark" />
                             <div className="description-comments">
-                                <h1>Comments & Questions</h1>
+                                <h1>Comments &amp; Questions</h1>
                                 <form onSubmit={this.handleCommentFormSubmit} ref={(el) => {this.form = el}} className="pure-form">
                                     <div className="form-group">
                                         <input type="text" id="user-comments" name="user-comments" placeholder="Add a comment or question" />
@@ -107,11 +107,16 @@ class RouteListingDescription extends Component {
                                 </form>
                                 <div className="description-comment-dialogue">
                                     {
-                                        this.state.comments.map((comment)=>{
+                                        this.state.comments
+                                        .filter((comment)=> {
+                                            return comment.listing_id === id
+                                        })
+                                        .map((comment)=>{
                                             var props = {
                                                 key: comment.id,
                                                 ...comment,
-                                                loadListing: this.loadListing
+                                                loadListing: this.loadListing,
+                                                currentUser: currentUser
                                             }
                                             return(
                                                 <Comment {...props}/>

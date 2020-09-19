@@ -252,12 +252,14 @@
         border: thin rgba(0,0,0,0.1) solid;
         border-radius: $s-border-radius;
         padding: 0.5em;
+        min-height: 8em;
     }
 
     .dialogue-comment {
         display: flex;
         align-items: center;
         position: relative;
+        padding: 0.5em 0;
 
         &:not(:last-child) {
             border-bottom: thin rgba(0,0,0,0.1) solid;

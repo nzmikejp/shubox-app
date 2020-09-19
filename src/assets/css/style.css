@@ -830,6 +830,7 @@ main {
   border: thin rgba(0, 0, 0, 0.1) solid;
   border-radius: 0.31em;
   padding: 0.5em;
+  min-height: 8em;
 }
 
 .route-listing .dialogue-comment {
@@ -840,6 +841,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  padding: 0.5em 0;
 }
 
 .route-listing .dialogue-comment:not(:last-child) {
