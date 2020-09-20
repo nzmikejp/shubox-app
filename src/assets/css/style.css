@@ -101,6 +101,10 @@ main {
   color: #fff;
 }
 
+.btn-round-l:focus {
+  outline: none;
+}
+
 .btn-round-s {
   width: 1.8em;
   height: 1.8em;
@@ -249,8 +253,10 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.2);
+  border: thin #fff solid;
+  -webkit-box-shadow: 0 0.2em 0.3em rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.2em 0.3em rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
 .profile-image img {
@@ -434,25 +440,8 @@ main {
           align-items: center;
 }
 
-.footer .user-profile .profile-image {
-  width: 1.66em;
-  height: 1.66em;
-  border-radius: 50%;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .footer .user-profile .profile-image img {
-  display: block;
-  width: 100%;
+  width: 105%;
 }
 
 .footer .user-profile .profile-image + p {
@@ -852,6 +841,10 @@ main {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 1.7em;
           flex: 0 0 1.7em;
+}
+
+.route-listing .dialogue-comment .profile-image img {
+  width: 105%;
 }
 
 .route-listing .dialogue-comment .profile-comment {

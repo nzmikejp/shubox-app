@@ -42,8 +42,9 @@ class RouteListingDescription extends Component {
 
         API.addComment(data).then(res => {
             this.loadComments()
+            this.form.reset()
         })
-
+        
     }
     
     render(){
@@ -108,6 +109,7 @@ class RouteListingDescription extends Component {
                                 <div className="description-comment-dialogue">
                                     {
                                         this.state.comments
+                                        .sort().reverse()
                                         .filter((comment)=> {
                                             return comment.listing_id === id
                                         })

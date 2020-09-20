@@ -27,7 +27,9 @@ class Listings extends Component {
                 <section className="section route-listings">
                     <div className="container">
                         {
-                            this.state.listings.map((listing) => {
+                            this.state.listings
+                            .sort().reverse()
+                            .map((listing) => {
                                 var props = {
                                     key: listing.id,
                                     ...listing,

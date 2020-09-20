@@ -29,7 +29,9 @@ class RouteProfile extends Component {
                         <button className="btn btn-gray btn-noshadow" onClick={()=>{navigate('/listings/create')}}>Create listing</button>
                         <hr className="divider-dark" />
                         {
-                            listings.map((listing)=>{
+                            listings
+                            .sort().reverse()
+                            .map((listing)=>{
                                 var props = {
                                     key: listing.id,
                                     ...listing,

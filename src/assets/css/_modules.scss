@@ -33,6 +33,10 @@
     align-items: center;
     border-radius: 50%;
     color: $light-color;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .btn-round-s {
@@ -155,7 +159,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.2);
+    border: thin $light-color solid;
+    box-shadow: 0 0.2em 0.3em rgba(0, 0, 0, 0.1);
+    background-color: $light-color;
+
 
     img {
         display: block;
@@ -310,17 +317,9 @@
         align-items: center;
 
         .profile-image {
-            width: 1.66em;
-            height: 1.66em;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
     
             img {
-                display: block;
-                width: 100%;
+                width: 105%;
             }
         }
 
