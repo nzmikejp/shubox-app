@@ -267,10 +267,6 @@
 
         .profile-image {
             flex: 0 0 1.7em;
-
-            img {
-                width: 105%;
-            }
         }
 
         .profile-comment {
@@ -329,11 +325,6 @@
         width: 4.5em;
         height: 4.5em;
         margin: 0 auto;
-    
-        img {
-            display: block;
-            width: 100%;
-        }
     }
 
     .listing-btns {
@@ -482,6 +473,7 @@
             padding-bottom: 0.8em;
         }
     }
+
 
     .pure-form {
         padding-top: 0.5em;

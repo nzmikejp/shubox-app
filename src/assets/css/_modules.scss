@@ -158,7 +158,6 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
     border: thin $light-color solid;
     box-shadow: 0 0.2em 0.3em rgba(0, 0, 0, 0.1);
     background-color: $light-color;
@@ -315,13 +314,6 @@
         padding-left: 1.2em;
         display: flex;
         align-items: center;
-
-        .profile-image {
-    
-            img {
-                width: 105%;
-            }
-        }
 
         .profile-image + p {
             padding-left: 1em;

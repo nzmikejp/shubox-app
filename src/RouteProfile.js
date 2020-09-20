@@ -14,7 +14,7 @@ class RouteProfile extends Component {
             <main>
                 <section className="section-scroll route-user">
                     <div className="header">
-                        <div className="profile-image">
+                        <div className="user-image">
                             <div className="profile-image">
                                 <img src={photo ? API.serverUrl+photo : photoFallback} alt="" />
                             </div>
