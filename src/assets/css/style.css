@@ -436,6 +436,13 @@ main {
           align-items: center;
 }
 
+.footer .user-profile .profile-image {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 1.6em;
+          flex: 0 0 1.6em;
+  border: none;
+}
+
 .footer .user-profile .profile-image + p {
   padding-left: 1em;
   color: #fff;

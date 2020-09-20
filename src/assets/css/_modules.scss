@@ -313,6 +313,11 @@
         padding-left: 1.2em;
         display: flex;
         align-items: center;
+        
+        .profile-image {
+            flex: 0 0 1.6em;
+            border: none;
+        }
 
         .profile-image + p {
             padding-left: 1em;
