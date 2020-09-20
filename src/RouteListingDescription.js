@@ -33,17 +33,21 @@ class RouteListingDescription extends Component {
     handleCommentFormSubmit = (e)=>{
         e.preventDefault()
         var { currentUser, id } = this.props
-        var formData = new FormData(this.form)
-        var data = {
-            content: formData.get('user-comments'),
-            user_id: currentUser.id,
-            listing_id: id
+        if (currentUser) {
+            var formData = new FormData(this.form)
+            var data = {
+                content: formData.get('user-comments'),
+                user_id: currentUser.id,
+                listing_id: id
+            }
+    
+            API.addComment(data).then(res => {
+                this.loadComments()
+                this.form.reset()
+            })
+        }else {
+            navigate('/users/authenticate')
         }
-
-        API.addComment(data).then(res => {
-            this.loadComments()
-            this.form.reset()
-        })
         
     }
     
