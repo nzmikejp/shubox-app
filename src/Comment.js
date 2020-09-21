@@ -12,7 +12,6 @@ class Comment extends Component {
 
     render(){
         var { content, user, currentUser } = this.props
-        console.log(currentUser)
 
         return(
             <div className="dialogue-comment">
