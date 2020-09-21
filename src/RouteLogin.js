@@ -29,7 +29,7 @@ class RouteLogin extends Component {
             if(user){
                 setCurrentUser(user)
                 localStorage.setItem('userId',user.id)
-                navigate('/types')
+                navigate('/listings')
             }else{
                 this.setState({message:'Invalid username or password!!!'})
             }
@@ -54,9 +54,9 @@ class RouteLogin extends Component {
                                 <input type="password" name="user-password" id="user-password" placeholder="Enter your password"/>
                             </div>
                             <div className="form-group with-btn">
+                                <p>{this.state.message}</p>
                                 <button type="submit" className="btn btn-gray">Sign in</button>
                                 <Link to="/users/create" className="signup-link">Don’t have an account? Sign up here</Link>
-                                <p>{this.state.message}</p>
                             </div>
                         </form>
                     </div>
