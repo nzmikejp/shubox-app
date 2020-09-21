@@ -56,7 +56,7 @@ class App extends Component {
                 <Match path={route}>
                   {props => 
                   props.match ? (
-                    <Footer/>
+                    <Footer currentUser={currentUser}/>
                   ):null
                 }
                 </Match>

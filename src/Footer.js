@@ -19,7 +19,7 @@ class Footer extends Component {
                             <div className="profile-image">
                                 <img src={currentUser.photo ? API.serverUrl+currentUser.photo : avatar} alt="Profile Image"/>
                             </div>
-                            <p><span>Welcome</span>{currentUser.name}</p>
+                            <p><span>Welcome </span>{currentUser.name}</p>
                             </>
                             ) : null
                         }

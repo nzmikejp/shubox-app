@@ -37,7 +37,7 @@ class Listings extends Component {
                         </div>
                         
                     </header>
-                    <span className="header-title">Add listing</span>
+                    <span className="header-title">Add a listing</span>
                 </div>
                 <div className="container">
                     {
