@@ -11,7 +11,7 @@ class Comment extends Component {
     }
 
     render(){
-        var { content, user, currentUser } = this.props
+        var { content, user, listing,  currentUser } = this.props
 
         return(
             <div className="dialogue-comment">
@@ -21,7 +21,7 @@ class Comment extends Component {
                 <p className="profile-comment">
                     {content}
                 </p>
-                { currentUser && user.id === currentUser.id ? (
+                { currentUser && listing.user_id === currentUser.id ? (
                     <div className="btn-round-s btn-red" onClick={this.handleCommentDelete}>
                         <i className="fas fa-trash btn-font-s"></i>
                     </div>
