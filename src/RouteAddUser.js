@@ -19,8 +19,7 @@ class RouteAddUser extends Component {
             var user = res.data
             this.props.setCurrentUser(user)
             localStorage.setItem('userId',user.id)
-            navigate('/user/profile')
-            
+            navigate('/user/profile') 
         })
       
       }

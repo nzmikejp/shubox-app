@@ -4,14 +4,15 @@ import API from './API'
 class Comment extends Component {
 
     handleCommentDelete = () => {
-        var {id, loadListing} = this.props
+        var {id, loadComments} = this.props
         API.deleteComment(id).then(res => {
-            loadListing()
+            loadComments()
         })
     }
 
     render(){
         var { content, user, currentUser } = this.props
+        console.log(currentUser)
 
         return(
             <div className="dialogue-comment">
@@ -21,7 +22,7 @@ class Comment extends Component {
                 <p className="profile-comment">
                     {content}
                 </p>
-                { user.id === currentUser ? (
+                { currentUser && user.id === currentUser.id ? (
                     <div className="btn-round-s btn-red" onClick={this.handleCommentDelete}>
                         <i className="fas fa-trash btn-font-s"></i>
                     </div>

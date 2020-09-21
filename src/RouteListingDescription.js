@@ -122,6 +122,7 @@ class RouteListingDescription extends Component {
                                                 key: comment.id,
                                                 ...comment,
                                                 loadListing: this.loadListing,
+                                                loadComments: this.loadComments,
                                                 currentUser: currentUser
                                             }
                                             return(
