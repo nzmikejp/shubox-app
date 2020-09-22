@@ -5,16 +5,62 @@ import API from './API'
 class RouteUpdateListing extends Component {
     constructor(props){
         super(props)
+        this.state = {
+            listing:{}
+        }
     }
 
+    componentDidMount(){
+        var {id} = this.props;
+        API.getSingleListings(id).then(res => {
+        this.setState({listing:res.data})
+        })
+    }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault()
+
+        var formData = new FormData(this.form)
+        if(formData.get('photo').size > 0){
+            API.uploadFile(formData)
+
+            .then(fileName => {
+                var data = {
+                    name:formData.get('name'),
+                    brand:formData.get('brand'),name:formData.get('name'),
+                    price:formData.get('price'),
+                    category_id:formData.get('gender'),
+                    description:formData.get('description'),
+                    photo: fileName,
+                }
+                var {id} = this.props;
+                API.updateListing(id,data).then(res => navigate('/listings'))
+            })
+        }else{
+            var data = {
+                name:formData.get('name'),
+                brand:formData.get('brand'),name:formData.get('name'),
+                price:formData.get('price'),
+                category_id:formData.get('gender'),
+                description:formData.get('description'),
+                photo: '',
+            }
+            var {id} = this.props;
+            API.updateListing(id,data).then(res => navigate('/listings'))
+        }
+   }
+
     render(){
+        var {brand, name, price, gender, description, photo} = this.state.listing
+
         return(
             <section className="section-scroll route-update-listing">
                 <div className="container">
                     <div className="header">
                         <h1>Update your Listing</h1>
                     </div>
-                    <form action="#" className="pure-form pure-form-stacked">
+                    <form action="#" className="pure-form pure-form-stacked" 
+                    onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                         <div className="form-group">
                             <label for="brand">Brand:</label>
                             <input type="text" name="brand" id="brand" placeholder="Enter your brand name"/>
