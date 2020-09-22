@@ -1,39 +1,46 @@
 import React, { Component } from 'react'
-import { Link } from '@reach/router'
+import { Link,navigate } from '@reach/router'
 import API from './API'
 
 class Listing extends Component {
-    constructor(props) {
-        super(props)
-    }
+
+// handleDelete = () => {
+//     var {id, loadlistings} = this.props
+//     API.deleteListing(id)
+//     loadlistings()
+
+//     }
 
     render() {
+        var {id, name, brand, description, photo, category } = this.props
+        var pricePrefix = '$' 
+
         return (
             <div className="listing-item">
                 <div className="listing-description">
+
                     <div className="listing-info">
-                        <h1>Dr Martens</h1>
-                        <h2>Jadon Boot</h2>
-                        <p>
-                            A fierce evolution of the 8-eye boot, the Jadon retains all its original details — grooved edges, yellow stitching and a heel-loop — and adds a chunky, empowering...
-                        </p>
+                        <h1> {name} </h1>
+                        <h2> {brand} </h2>
+                        <p> {description} </p>
                     </div>
+
                     <div className="listing-price">
                         <div className="item-price">
-                            <h1><span>Price</span>$350.00</h1>
+                            <h1><span>Price</span>{pricePrefix}</h1>
                         </div>
-                        <p className="type-gender">unisex</p>
+                        {/* <p className="type-gender">{category.name}</p> */}
                     </div>
                 </div>
                 <div className="listing-image">
-                    <img src="/images/boots-1.png" alt="" />
+                    <img src={'/images/profile-image-fallback.png'} alt='shoe image'/>
                 </div>
                 <div className="listing-btns">
-                    <div className="btn-round-s btn-gray">
+                    <div className="btn-round-s btn-gray" onClick={()=>{navigate('/listings/'+id+'/edit')}}>
                         <i className="fas fa-pen btn-font-s"></i>
                     </div>
-                    <div className="btn-round-s btn-red">
-                        <i className="fas fa-trash btn-font-s"></i>
+                    <div className="btn-round-s btn-red" >
+                        <i onClick={this.handleDelete} className="fas fa-trash btn-font-s"></i>
                     </div>
                 </div>
             </div>
