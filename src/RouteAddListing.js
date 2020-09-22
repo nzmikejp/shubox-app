@@ -66,7 +66,7 @@ class RouteAddListing extends Component {
                         <div className="header">
                             <h1>Create a Listing</h1>
                         </div>
-                        <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}} className="pure-form pure-form-stacked">
+                        <form onSubmit={ this.handleFormSubmit } ref={ (el) => { this.form = el } } className="pure-form pure-form-stacked">
                             <div className="form-group">
                                 <label htmlFor="brand">Brand:</label>
                                 <input type="text" name="brand" id="brand" placeholder="Enter your brand name" />

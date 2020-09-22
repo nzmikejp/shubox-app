@@ -8,12 +8,12 @@ class Type extends Component {
         var photoPath = "/images/"+photo+".png"
 
         return (
-            <div className="catergory" onClick={()=>{navigate('/types/'+id)}}>
+            <div className="catergory" onClick={ () => { navigate('/types/'+id) } }>
                 <div className="catergory-title">
-                    <h1>{name}</h1>
+                    <h1>{ name }</h1>
                 </div>
                 <div className="catergory-image">
-                    <img src={photoPath} alt="Sneaker" />
+                    <img src={ photoPath } alt="Sneaker" />
                 </div>
             </div>
         )

@@ -13,7 +13,7 @@ class Listings extends Component {
 
     loadListings = () => {
         API.getListings().then(res => {
-        this.setState({listings:res.data})
+        this.setState({ listings: res.data })
       })
     }
     
@@ -35,7 +35,7 @@ class Listings extends Component {
                                     ...listing,
                                     loadListings: this.loadListings
                                 }
-                                return (<Listing {...props} />)
+                                return (<Listing { ...props } />)
                             })
                         }
                     </div>

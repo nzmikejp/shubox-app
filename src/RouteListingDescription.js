@@ -16,12 +16,12 @@ class RouteListingDescription extends Component {
     
     loadListing = () => {
         var {id} = this.props
-        API.getSingleListing(id).then(res => this.setState({listing:res.data}))
+        API.getSingleListing(id).then(res => this.setState({ listing: res.data }))
     }
 
     loadComments = () => {
         API.getComments().then(res => {
-        this.setState({comments:res.data})
+        this.setState({ comments: res.data })
       })
     }
     
@@ -63,8 +63,8 @@ class RouteListingDescription extends Component {
             <main>
                 <section className="section-scroll route-listing">
                     <div className="description-image">
-                        <img src={photo ? API.serverUrl+photo : photoFallback} alt="" />
-                        <div className="btn-gray btn-round-l btn-back" onClick={()=>{navigate('/listings')}}>
+                        <img src={ photo ? API.serverUrl+photo : photoFallback } alt="" />
+                        <div className="btn-gray btn-round-l btn-back" onClick={ () => { navigate('/listings') } }>
                             <i className="fas fa-chevron-left"></i>
                         </div>
                     </div>
@@ -72,37 +72,37 @@ class RouteListingDescription extends Component {
                         <div className="description-container">
                             <div className="description-header">
                                 <div>
-                                    <h1>{brand}</h1>
-                                    <h2>{name}</h2>
+                                    <h1>{ brand }</h1>
+                                    <h2>{ name }</h2>
                                 </div>
-                                <p className="type-gender" style={{backgroundColor: category.color}}>{category.name}</p>
+                                <p className="type-gender" style={ { backgroundColor: category.color } }>{ category.name }</p>
                             </div>
                             <div className="description-body">
                                 <p>
-                                    {description}
+                                    { description }
                                 </p>
                             </div>
                             <div className="description-details">
                                 <div className="item-price">
-                                    <h1><span>Price</span>{pricePrefix}</h1>
+                                    <h1><span>Price</span>{ pricePrefix }</h1>
                                 </div>
                                 <div className="description-buynow">
                                     <button className="btn btn-green btn-noshadow btn-small">buy now</button>
                                 </div>
                                 <div className="description-seller">
                                     <div className="profile-image">
-                                        <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="" />
+                                        <img src={ user.photo ? API.serverUrl+user.photo : userFallback } alt="" />
                                     </div>
                                     <div className="profile-details">
                                         <p className="profile-title">Seller</p>
-                                        <p className="profile-user">{user.username}</p>
+                                        <p className="profile-user">{ user.username }</p>
                                     </div>
                                 </div>
                             </div>
                             <hr className="divider-dark" />
                             <div className="description-comments">
                                 <h1>Comments &amp; Questions</h1>
-                                <form onSubmit={this.handleCommentFormSubmit} ref={(el) => {this.form = el}} className="pure-form">
+                                <form onSubmit={ this.handleCommentFormSubmit } ref={ (el) => { this.form = el } } className="pure-form">
                                     <div className="form-group">
                                         <input type="text" id="user-comments" name="user-comments" placeholder="Add a comment or question" />
                                         <button type="submit" className="btn-round-l btn-gray">
@@ -126,7 +126,7 @@ class RouteListingDescription extends Component {
                                                 currentUser: currentUser
                                             }
                                             return(
-                                                <Comment {...props}/>
+                                                <Comment { ...props }/>
                                             )
                                         })
                                     }

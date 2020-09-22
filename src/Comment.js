@@ -4,7 +4,7 @@ import API from './API'
 class Comment extends Component {
 
     handleCommentDelete = () => {
-        var {id, loadComments} = this.props
+        var { id, loadComments } = this.props
         API.deleteComment(id).then(res => {
             loadComments()
         })
@@ -16,13 +16,13 @@ class Comment extends Component {
         return(
             <div className="dialogue-comment">
                 <div className="profile-image">
-                    <img src={user.photo ? API.serverUrl+user.photo : "/images/user-fallback.png" }alt="" />
+                    <img src={ user.photo ? API.serverUrl+user.photo : "/images/user-fallback.png" }alt="" />
                 </div>
                 <p className="profile-comment">
-                    {content}
+                    { content }
                 </p>
                 { currentUser && listing.user_id === currentUser.id ? (
-                    <div className="btn-round-s btn-red" onClick={this.handleCommentDelete}>
+                    <div className="btn-round-s btn-red" onClick={ this.handleCommentDelete }>
                         <i className="fas fa-trash btn-font-s"></i>
                     </div>
                 ) : null

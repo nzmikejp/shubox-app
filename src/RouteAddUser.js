@@ -21,9 +21,7 @@ class RouteAddUser extends Component {
             localStorage.setItem('userId',user.id)
             navigate('/user/profile') 
         })
-      
       }
-
 
     render(){
         return(
@@ -33,7 +31,7 @@ class RouteAddUser extends Component {
                         <img src="/images/shu-logo-small.png" alt="" />
                         <h1>Account Sign Up</h1>
                         <hr className="divider" />
-                        <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}} className="pure-form pure-form-stacked">
+                        <form onSubmit={ this.handleFormSubmit } ref={(el) => { this.form = el } } className="pure-form pure-form-stacked">
                             <div className="form-group">
                                 <label htmlFor="name">Name:</label>
                                 <input type="text" name="name" id="name" placeholder="Enter your name" />
