@@ -4,12 +4,12 @@ import API from './API'
 
 class Listing extends Component {
 
-// handleDelete = () => {
-//     var {id, loadlistings} = this.props
-//     API.deleteListing(id)
-//     loadlistings()
+    handleDelete = () => {
+        var {id, loadListings} = this.props
+        API.deleteListing(id)
+        loadListings()
 
-//     }
+    }
 
     render() {
         var {id, name, brand, description, photo, category } = this.props

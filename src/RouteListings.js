@@ -24,7 +24,10 @@ class Listings extends Component {
     }
 
     componentDidMount(){
-        //this.loadListing();
+        this.loadListings();
+        
+    }
+    loadListings = () =>{
         API.getListings().then(res => {
             this.setState({listings:res.data})
         })
