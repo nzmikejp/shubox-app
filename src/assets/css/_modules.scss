@@ -299,6 +299,14 @@
     left: 0;
     background-color: $red-accent;
     border-radius: $l-border-radius-top;
+    transition: all ease 0.5s;
+    opacity: 0;
+    transform: translateY(100%);
+    
+    &.active{
+        transform: translateY(0);
+        opacity: 1;  
+    }
     
     
     .user-info {
@@ -359,4 +367,33 @@
     }
 
 
+}
+
+.router {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+}
+
+.move-enter {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 100;
+}
+.move-enter.move-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition:all ease 0.5s;
+}
+
+.move-exit {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 99;
+    transition:all ease 0.5s;  
+}
+.move-exit.move-exit-active {
+    transform: translateX(100%);  
+    opacity: 0; 
 }

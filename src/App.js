@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Router, Match, navigate } from "@reach/router"
+import {Router, Match, navigate, Location} from "@reach/router"
 import RouteWelcome from './RouteWelcome'
 import RouteLogin from './RouteLogin'
 import RouteAddUser from './RouteAddUser'
@@ -11,9 +11,24 @@ import RouteAddListing from './RouteAddListing'
 import RouteUpdateListing from './RouteUpdateListing'
 import RouteProfile from './RouteProfile'
 import RouteUpdateUser from './RouteUpdateUser'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import Footer from './Footer'
 import './assets/css/style.css';
 import API from './API';
+
+const FadeTransitionRouter = props => (
+  <Location>
+    {({location}) => (
+      <TransitionGroup className="transition-group">
+        <CSSTransition key={location.key} classNames="move" timeout={500}>
+          <Router location={location} className="router">
+            {props.children}
+          </Router>
+        </CSSTransition>
+      </TransitionGroup>
+    )}
+  </Location>
+)
 
 class App extends Component {
   constructor(props){
@@ -47,12 +62,13 @@ class App extends Component {
   }
 
   render(){
-    var footerRoutes = ['types', 'listings', 'listing/:id/description', 'listings/create', 'listings/:id/edit', 'user/profile', 'users/:id/edit', 'types/:id']
+    var footerlessRoutes = ['/','/users/authenticate','/users/create']
     var {currentUser} = this.state
+    console.log(currentUser)
 
     return (
       <div className="App">
-        <Router>
+        <FadeTransitionRouter>
           <RouteWelcome path="/" />
           <RouteLogin path="users/authenticate" setCurrentUser={this.setCurrentUser} />
           <RouteAddUser path="users/create" setCurrentUser={this.setCurrentUser} />
@@ -60,25 +76,17 @@ class App extends Component {
           <RouteSingleType path="types/:id" />
           <RouteListings path="listings" />
           <RouteListingDescription path="listing/:id/description" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser} />
-          {currentUser ? <RouteAddListing path="listings/create" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser } /> : null}
+          {currentUser ? <RouteAddListing path="listings/create" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser} /> : null}
           {currentUser ? <RouteUpdateListing path="listings/:id/edit" loadCurrentUser={this.loadCurrentUser} /> : null}
           {currentUser ? <RouteProfile path="user/profile" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser} /> : null}
           {currentUser ? <RouteUpdateUser path="users/:id/edit" handleLogout={this.handleLogout} loadCurrentUser={this.loadCurrentUser} setCurrentUser={this.setCurrentUser} /> : null}
           <RouteWelcome default />
-        </Router>
-        {
-          footerRoutes.map(route => {
-            return (
-              <Match path={route} key={route}>
-                {props =>
-                  props.match ? (
-                    <Footer currentUser={currentUser} />
-                  ) : null
-                }
-                </Match>
-              )
-            })
-          }
+        </FadeTransitionRouter>
+        <Location>
+          {({location}) => (
+            <Footer currentUser={currentUser} active={!footerlessRoutes.includes(location.pathname)}/>
+          )}
+        </Location> 
       </div>
     );
   }

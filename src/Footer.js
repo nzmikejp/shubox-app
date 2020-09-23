@@ -5,11 +5,12 @@ import API from './API'
 class Footer extends Component {
 
     render(){
-        var {currentUser} = this.props
+        var {currentUser, active} = this.props
         var photoFallback = '/images/user-fallback.png'
+        console.log(active)
 
         return(
-            <footer className="footer">
+            <footer className={active ? 'footer active' : 'footer'}>
                 <div className="user-info">
                     <div className="user-profile">
                         {currentUser ? (
