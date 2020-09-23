@@ -27,7 +27,7 @@ class RouteUpdateListing extends Component {
             .then(fileName => {
                 var data = {
                     name:formData.get('name'),
-                    brand:formData.get('brand'),name:formData.get('name'),
+                    brand:formData.get('brand'),
                     price:formData.get('price'),
                     category_id:formData.get('gender'),
                     description:formData.get('description'),
@@ -39,7 +39,7 @@ class RouteUpdateListing extends Component {
         }else{
             var data = {
                 name:formData.get('name'),
-                brand:formData.get('brand'),name:formData.get('name'),
+                brand:formData.get('brand'),
                 price:formData.get('price'),
                 category_id:formData.get('gender'),
                 description:formData.get('description'),
@@ -63,15 +63,15 @@ class RouteUpdateListing extends Component {
                     onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                         <div className="form-group">
                             <label for="brand">Brand:</label>
-                            <input type="text" name="brand" id="brand" placeholder="Enter your brand name"/>
+                            <input type="text" name="brand" id="brand" defaultValue={brand} placeholder="Enter your brand name"/>
                         </div>
                         <div className="form-group">
                             <label for="shoe-style">Shoe style name:</label>
-                            <input type="text" name="shoe-style" id="shoe-style" placeholder="Enter a style name"/>
+                            <input type="text" name="shoe-style" id="shoe-style" defaultValue={gender} placeholder="Enter a style name"/>
                         </div>
                         <div className="form-group">
                             <label for="price">Price:</label>
-                            <input type="text" name="price" id="price" placeholder="Enter your price"/>
+                            <input type="text" name="price" id="price" defaultValue={price} placeholder="Enter your price"/>
                         </div>
                         <div className="form-group">
                             <label for="photo">Photo:</label>
