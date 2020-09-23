@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { navigate } from '@reach/router'
+import React, {Component} from 'react'
+import {navigate} from '@reach/router'
 import API from './API'
 
 class RouteAddListing extends Component {
@@ -8,7 +8,7 @@ class RouteAddListing extends Component {
         e.preventDefault()
 
         var formData = new FormData(this.form)
-        var { currentUser,loadCurrentUser } = this.props;
+        var {currentUser,loadCurrentUser} = this.props;
  
         if(formData.get('photo').size > 0){
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Type from './Type'
 import API from './API'
 
@@ -13,7 +13,7 @@ class RouteTypes extends Component {
 
     loadTypes = () => {
         API.getTypes().then(res => {
-            this.setState({ types: res.data })
+            this.setState({types: res.data})
         })
     }
 
@@ -33,7 +33,7 @@ class RouteTypes extends Component {
                             ...type,
                             loadTypes:this.loadTypes
                         }
-                        return (<Type { ...props } />)
+                        return (<Type {...props} />)
                     })
                 }
                 </section>

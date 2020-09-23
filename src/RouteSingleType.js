@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Listing from './Listing'
 import API from './API'
 
@@ -29,7 +29,7 @@ class RouteSingleType extends Component {
       }
 
     render(){
-        var { type } = this.state
+        var {type} = this.state
 
         return type ? (
             <main>

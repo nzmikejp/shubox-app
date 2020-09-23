@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Listing from './Listing'
 import API from './API'
 
@@ -13,7 +13,7 @@ class Listings extends Component {
 
     loadListings = () => {
         API.getListings().then(res => {
-        this.setState({ listings: res.data })
+        this.setState({listings: res.data})
       })
     }
     
@@ -35,7 +35,7 @@ class Listings extends Component {
                                     ...listing,
                                     loadListings: this.loadListings
                                 }
-                                return (<Listing { ...props } />)
+                                return (<Listing {...props} />)
                             })
                         }
                     </div>

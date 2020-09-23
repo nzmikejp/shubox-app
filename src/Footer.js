@@ -1,29 +1,29 @@
-import React, { Component } from 'react'
-import { Link } from '@reach/router'
+import React, {Component} from 'react'
+import {Link} from '@reach/router'
 import API from './API'
 
 class Footer extends Component {
 
     render(){
-        var { currentUser } = this.props
+        var {currentUser} = this.props
         var photoFallback = '/images/user-fallback.png'
 
         return(
             <footer className="footer">
                 <div className="user-info">
                     <div className="user-profile">
-                        { currentUser ? (
+                        {currentUser ? (
                             <>
                             <div className="profile-image">
-                                <img src={ currentUser.photo ? API.serverUrl+currentUser.photo : photoFallback } alt=""/>
+                                <img src={currentUser.photo ? API.serverUrl+currentUser.photo : photoFallback} alt="" />
                             </div>
-                        <p><span>Welcome</span> { currentUser.name }</p>
+                            <p><span>Welcome</span> {currentUser.name}</p>
                             </>
                             ) : null
                         }
                     </div>
                     <div className="logo">
-                        <img src="/images/shu-logo-long.png" alt="Logo"/>
+                        <img src="/images/shu-logo-long.png" alt="Logo" />
                     </div>
                 </div>
                 <div className="nav">
