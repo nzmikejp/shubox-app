@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Router, Match, navigate, Location} from "@reach/router"
+import {Router, navigate, Location} from "@reach/router"
 import RouteWelcome from './RouteWelcome'
 import RouteLogin from './RouteLogin'
 import RouteAddUser from './RouteAddUser'
@@ -64,7 +64,6 @@ class App extends Component {
   render(){
     var footerlessRoutes = ['/','/users/authenticate','/users/create']
     var {currentUser} = this.state
-    console.log(currentUser)
 
     return (
       <div className="App">

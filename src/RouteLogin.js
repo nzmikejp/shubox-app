@@ -59,7 +59,6 @@ class RouteLogin extends Component {
 
     render(){
         var {errorMessage} = this.state
-        var {style} = this.props
 
         return(
             <main>

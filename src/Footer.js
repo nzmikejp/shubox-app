@@ -7,7 +7,6 @@ class Footer extends Component {
     render(){
         var {currentUser, active} = this.props
         var photoFallback = '/images/user-fallback.png'
-        console.log(active)
 
         return(
             <footer className={active ? 'footer active' : 'footer'}>
