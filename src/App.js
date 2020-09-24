@@ -11,6 +11,7 @@ import RouteAddListing from './RouteAddListing'
 import RouteUpdateListing from './RouteUpdateListing'
 import RouteProfile from './RouteProfile'
 import RouteUpdateUser from './RouteUpdateUser'
+import RouteSingleUser from './RouteSingleUser'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import Footer from './Footer'
 import './assets/css/style.css';
@@ -73,6 +74,7 @@ class App extends Component {
           <RouteAddUser path="users/create" setCurrentUser={this.setCurrentUser} />
           <RouteTypes path="types" />
           <RouteSingleType path="types/:id" />
+          <RouteSingleUser path="user/:id/listings" />
           <RouteListings path="listings" />
           <RouteListingDescription path="listing/:id/description" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser} />
           {currentUser ? <RouteAddListing path="listings/create" currentUser={currentUser} loadCurrentUser={this.loadCurrentUser} /> : null}

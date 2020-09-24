@@ -97,7 +97,7 @@ class RouteListingDescription extends Component {
                                 <div className="description-buynow">
                                     <button className="btn btn-green btn-noshadow btn-small">buy now</button>
                                 </div>
-                                <div className="description-seller">
+                                <div className="description-seller" onClick={() => {navigate('/user/'+user.id+'/listings')}}>
                                     <div className="profile-image">
                                         <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="" />
                                     </div>

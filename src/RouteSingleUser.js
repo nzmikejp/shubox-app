@@ -6,35 +6,35 @@ import API from './API'
 const ListingAnimation = Keyframes.Trail({
     appear: [{y: 0, opacity: 1,delay: 250, from: {y: 50, opacity: 0}}]
 })
-class RouteSingleType extends Component {
+class RouteSingleUser extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            type: null,
+            user: null,
         }
     }
 
-    loadType = () => {
+    loadUser = () => {
         var {id} = this.props
-        API.getSingleType(id).then(res => this.setState({type:res.data}))
+        API.getSingleUser(id).then(res => this.setState({user:res.data}))
     }
     
     componentDidMount(){
-        this.loadType()
+        this.loadUser()
     }
 
     render(){
-        var {type} = this.state
+        var {user} = this.state
         
-        return type ? (
+        return user ? (
             <main>
                 <section className="section route-listings">
                     <div className="container">
                         <ListingAnimation
                             native
-                            items={type.listings.sort((a,b)=>b.id-a.id)}
-                            keys={type.listings.map((listing) => listing.id)}
+                            items={user.listings.sort((a,b)=>b.id-a.id)}
+                            keys={user.listings.map((listing) => listing.id)}
                             state={'appear'}>
 
                             {(listing) => ({y, opacity,...props}) => {
@@ -58,4 +58,4 @@ class RouteSingleType extends Component {
     }
 }
 
-export default RouteSingleType
+export default RouteSingleUser
