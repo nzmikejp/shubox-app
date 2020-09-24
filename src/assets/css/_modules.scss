@@ -149,6 +149,12 @@
         padding-right: 1em;
         border-right: thin rgba(0,0,0,0.1) solid;
     }
+
+    .profile-image {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
 
 .profile-image {
@@ -161,7 +167,6 @@
     border: thin $light-color solid;
     box-shadow: 0 0.2em 0.3em rgba(0, 0, 0, 0.1);
     background-color: $light-color;
-
 
     img {
         display: block;

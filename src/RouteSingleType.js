@@ -26,6 +26,7 @@ class RouteSingleType extends Component {
 
     render(){
         var {type} = this.state
+        console.log(type)
         
         return type ? (
             <main>

@@ -26,6 +26,7 @@ class RouteSingleUser extends Component {
 
     render(){
         var {user} = this.state
+        console.log(user)
         
         return user ? (
             <main>

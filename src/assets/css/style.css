@@ -239,6 +239,12 @@ main {
   border-right: thin rgba(0, 0, 0, 0.1) solid;
 }
 
+.listing-item .profile-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .profile-image {
   width: 1.66em;
   height: 1.66em;
