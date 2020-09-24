@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
 import Listing from './Listing'
+import {Keyframes} from 'react-spring/renderprops'
 import API from './API'
 
+const ListingAnimation = Keyframes.Trail({
+    appear: [{y: 0, opacity: 1,delay: 250, from: {y: 50, opacity: 0}}]
+})
 class RouteSingleType extends Component {
     constructor(props){
         super(props)
@@ -30,21 +34,31 @@ class RouteSingleType extends Component {
 
     render(){
         var {type} = this.state
-
+        
         return type ? (
             <main>
                 <section className="section route-listings">
                     <div className="container">
-                        {
-                            type.listings.map((listing) => {
-                                var props = {
+                        <ListingAnimation
+                            native
+                            items={type.listings.sort((a,b)=>b.id-a.id)}
+                            keys={type.listings.map((listing) => listing.id)}
+                            state={'appear'}>
+
+                            {(listing) => ({y, opacity,...props}) => {
+
+                                var listingProps = {
                                     key: listing.id,
                                     ...listing,
-                                    loadListings: this.loadType
+                                    y,
+                                    opacity,
+                                    loadListings: this.loadListings
                                 }
-                                return (<Listing {...props} />)
-                            })
-                        }
+                                return <Listing {...listingProps} />   
+                                 
+                            }}
+
+                        </ListingAnimation>
                     </div>
                 </section>
             </main>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {navigate} from '@reach/router'
+import {animated} from 'react-spring/renderprops'
 import API from './API'
 
 class UserListing extends Component {
@@ -12,12 +13,16 @@ class UserListing extends Component {
     }
 
     render() {
-        var {brand, name, description, price, photo, category, id,} = this.props
+        var {brand, name, description, price, photo, category, id, y, opacity} = this.props
         var photoFallback = '/images/fallback.svg'
         var pricePrefix = '$'+price
 
         return (
-            <div className="listing-item">
+            <animated.div className="listing-item"
+            style={{
+                transform: y.interpolate(y => `translate3d(0,${y}%,0)`),
+                opacity, 
+            }}>
                 <div className="listing-description" onClick={() => {navigate('/listing/'+id+'/description')}}>
                     <div className="listing-info">
                         <h1>{brand}</h1>
@@ -42,7 +47,7 @@ class UserListing extends Component {
                         <i className="fas fa-trash btn-font-s"></i>
                     </div>
                 </div>
-            </div>
+            </animated.div>
         )
     }
 }

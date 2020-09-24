@@ -64,7 +64,7 @@ class RouteAddUser extends Component {
                                 items={formInputs}
                                 keys={formInputs.map((_, i) => i)}
                                 state={'appear'}>
-                                {(item, i) => ({ x, ...props }) => (
+                                {(item, i) => ({x, ...props}) => (
                                 <animated.div
                                     style={{
                                     transform: x.interpolate(x => `translate3d(${x}%,0,0)`),

@@ -33,10 +33,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.app {
+.App {
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 main {
@@ -309,6 +309,14 @@ main {
   width: 80%;
 }
 
+.pure-form > div {
+  margin-bottom: 1em;
+}
+
+.pure-form > div:nth-child(8), .pure-form div:nth-child(10) {
+  text-align: center;
+}
+
 .form-group label {
   color: #fff;
   text-transform: uppercase;
@@ -402,17 +410,18 @@ main {
 }
 
 .footer {
-  width: 100%;
+  width: 100vw;
   position: fixed;
   bottom: 0;
   left: 0;
   background-color: #c50308;
   border-radius: 1.375em 1.375em 0 0;
-  -webkit-transition: all ease 0.5s;
-  transition: all ease 0.5s;
+  -webkit-transition: all ease 1s;
+  transition: all ease 1s;
   opacity: 0;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
+  z-index: 101;
 }
 
 .footer.active {

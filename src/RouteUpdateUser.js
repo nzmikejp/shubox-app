@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import API from './API'
-import { navigate } from '@reach/router'
+import {navigate} from '@reach/router'
+import {Keyframes,animated} from 'react-spring/renderprops'
 
 class RouteUpdateUser extends Component {
     constructor(props){
@@ -14,7 +15,7 @@ class RouteUpdateUser extends Component {
     componentDidMount(){
         var {id} = this.props
         API.getSingleUser(id).then(res => {
-            this.setState({ user: res.data })
+            this.setState({user: res.data})
         })
     }
 
@@ -71,8 +72,41 @@ class RouteUpdateUser extends Component {
     }
     
     render(){
-
-        var {name, username, password, email} = this.state.user
+        const FormInputAnimation = Keyframes.Trail({
+            appear: [{x: 0, opacity: 1,delay: 250, from: {x: -50, opacity: 0}}]
+        })
+        
+        var {name, username, password, email} = this.state.user   
+        
+        const formInputs = [
+            <div className="form-group">
+                <label htmlFor="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name" defaultValue={name} />
+            </div>,
+            <div className="form-group">
+                <label htmlFor="user-name">User Name:</label>
+                <input type="text" name="user-name" id="user-name" placeholder="Enter your username" defaultValue={username} />
+            </div>,
+            <div className="form-group">
+                <label htmlFor="profile-image">Profile Image:</label>
+                <input type="file" name="profile-image" id="photo" />
+            </div>,
+            <div className="form-group">
+                <label htmlFor="user-email">Email:</label>
+                <input type="text" name="user-email" id="user-email" placeholder="Enter your username" defaultValue={email} />
+            </div>,
+            <div className="form-group">
+                <label htmlFor="user-password">Password:</label>
+                <input type="password" name="user-password" id="user-password" placeholder="Enter your password" defaultValue={password} />
+            </div>,
+            <div className="form-group with-btn">
+                <button type="submit" className="btn btn-gray">Update</button>
+            </div>,
+            <hr className="divider-dark" />,
+            <button className="btn btn-gray" onClick={this.props.handleLogout}>Log out</button>,
+            <hr className="divider-dark" />,
+            <button className="btn btn-red btn-small" onClick={this.handleDelete}>Delete Account</button>
+        ]
 
         return(
             <main>
@@ -82,34 +116,23 @@ class RouteUpdateUser extends Component {
                             <h1>Update your Profile</h1>
                         </div>
                         <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}} className="pure-form pure-form-stacked">
-                            <div className="form-group">
-                                <label htmlFor="name">Name:</label>
-                                <input type="text" name="name" id="name" placeholder="Enter your name" defaultValue={name} />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="user-name">User Name:</label>
-                                <input type="text" name="user-name" id="user-name" placeholder="Enter your username" defaultValue={username} />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="profile-image">Profile Image:</label>
-                                <input type="file" name="profile-image" id="photo" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="user-email">Email:</label>
-                                <input type="text" name="user-email" id="user-email" placeholder="Enter your username" defaultValue={email} />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="user-password">Password:</label>
-                                <input type="password" name="user-password" id="user-password" placeholder="Enter your password" defaultValue={password} />
-                            </div>
-                            <div className="form-group with-btn">
-                                <button type="submit" className="btn btn-gray">Update</button>
-                            </div>
+                            <FormInputAnimation
+                                native
+                                items={formInputs}
+                                keys={formInputs.map((_, i) => i)}
+                                state={'appear'}>
+                                {(item, i) => ({x, ...props}) => (
+                                <animated.div
+                                    style={{
+                                    transform: x.interpolate(x => `translate3d(${x}%,0,0)`),
+                                    ...props,
+                                    }}>
+                                    {item}    
+                                </animated.div>
+                                )}
+                            </FormInputAnimation>
                         </form>
-                        <hr className="divider-dark" />
-                        <button className="btn btn-gray" onClick={this.props.handleLogout}>Log out</button>
-                        <hr className="divider-dark" />
-                        <button className="btn btn-red btn-small" onClick={this.handleDelete}>Delete Account</button>
+                        
                     </div>
                 </section>
             </main>

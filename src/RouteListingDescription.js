@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import {navigate} from '@reach/router'
+import {Keyframes} from 'react-spring/renderprops'
 import Comment from './Comment'
 import API from './API'
+
+const CommentAnimation = Keyframes.Trail({
+    appear: [{y: 0, opacity: 1,delay: 250, from: {y: 50, opacity: 0}}]
+})
 
 
 class RouteListingDescription extends Component {
@@ -58,6 +63,9 @@ class RouteListingDescription extends Component {
         var photoFallback = '/images/fallback.svg'
         var userFallback = '/images/user-fallback.png'
         var pricePrefix = '$'+price 
+        var comments = this.state.comments.sort((a,b)=>b.id-a.id).filter((comment)=> {
+            return comment.listing_id === id
+        })
 
         return category ? (
             <main>
@@ -111,25 +119,28 @@ class RouteListingDescription extends Component {
                                     </div>
                                 </form>
                                 <div className="description-comment-dialogue">
-                                    {
-                                        this.state.comments
-                                        .sort().reverse()
-                                        .filter((comment)=> {
-                                            return comment.listing_id === id
-                                        })
-                                        .map((comment)=>{
-                                            var props = {
-                                                key: comment.id,
-                                                ...comment,
-                                                loadListing: this.loadListing,
-                                                loadComments: this.loadComments,
-                                                currentUser: currentUser
-                                            }
-                                            return(
-                                                <Comment {...props} />
-                                            )
-                                        })
-                                    }
+                                <CommentAnimation
+                                    native
+                                    items={comments}
+                                    keys={comments.map((comment) => comment.id)}
+                                    state={'appear'}>
+
+                                    {(comment) => ({y, opacity, ...props}) => {
+
+                                        var commentProps = {
+                                            key: comment.id,
+                                            ...comment,
+                                            y,
+                                            opacity,
+                                            loadListing: this.loadListing,
+                                            loadComments: this.loadComments,
+                                            currentUser: currentUser
+                                        }
+                                        return <Comment {...commentProps} />   
+                                        
+                                    }}
+
+                                </CommentAnimation>
                                 </div>
                             </div>
                         </div>

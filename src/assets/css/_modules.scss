@@ -214,6 +214,14 @@
 
 .pure-form {
     width: 80%;
+    
+    & > div {
+        margin-bottom: 1em;
+    }
+
+    & > div:nth-child(8), div:nth-child(10) {
+        text-align: center;
+    }
 }
 
 .form-group {
@@ -293,15 +301,16 @@
 }
 
 .footer {
-    width: 100%;
+    width: 100vw;
     position: fixed;
     bottom: 0;
     left: 0;
     background-color: $red-accent;
     border-radius: $l-border-radius-top;
-    transition: all ease 0.5s;
+    transition: all ease 1s;
     opacity: 0;
     transform: translateY(100%);
+    z-index: 101;
     
     &.active{
         transform: translateY(0);
@@ -397,3 +406,4 @@
     transform: translateX(100%);  
     opacity: 0; 
 }
+

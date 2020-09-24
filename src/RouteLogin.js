@@ -4,7 +4,7 @@ import {Keyframes,animated} from 'react-spring/renderprops'
 import API from './API'
 
 const FormInputAnimation = Keyframes.Trail({
-    appear: [{ x: 0, opacity: 1,delay: 250, from: { x: -50, opacity: 0 }}]
+    appear: [{ x: 0, opacity: 1,delay: 250, from: {x: -50, opacity: 0}}]
 })
 
 const formInputs = [

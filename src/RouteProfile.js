@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import {navigate} from '@reach/router'
 import UserListing from './UserListing'
+import {Keyframes} from 'react-spring/renderprops'
 import API from './API'
+
+const ListingAnimation = Keyframes.Trail({
+    appear: [{y: 0, opacity: 1,delay: 250, from: {y: 50, opacity: 0}}]
+})
 
 class RouteProfile extends Component {
 
@@ -28,18 +33,26 @@ class RouteProfile extends Component {
                     <div className="container">
                         <button className="btn btn-gray btn-noshadow" onClick={() => {navigate('/listings/create')}}>Create listing</button>
                         <hr className="divider-dark" />
-                        {
-                            listings
-                            .sort().reverse()
-                            .map((listing)=>{
-                                var props = {
+                        <ListingAnimation
+                            native
+                            items={listings.sort((a,b)=>b.id-a.id)}
+                            keys={listings.map((listing) => listing.id)}
+                            state={'appear'}>
+
+                            {(listing) => ({y, opacity, ...props}) => {
+
+                                var listingProps = {
                                     key: listing.id,
                                     ...listing,
+                                    y,
+                                    opacity,
                                     loadCurrentUser: loadCurrentUser
                                 }
-                                return (<UserListing {...props} />)
-                            })
-                        } 
+                                return <UserListing {...listingProps} />   
+                                 
+                            }}
+
+                        </ListingAnimation>
                     </div>
                 </section>
             </main>

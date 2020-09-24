@@ -1,20 +1,25 @@
 import React, {Component} from 'react'
+import {animated} from 'react-spring/renderprops'
 import API from './API'
 
 class Comment extends Component {
 
     handleCommentDelete = () => {
-        var { id, loadComments } = this.props
+        var {id, loadComments} = this.props
         API.deleteComment(id).then(res => {
             loadComments()
         })
     }
 
     render(){
-        var {content, user, listing,  currentUser} = this.props
+        var {content, user, listing,  currentUser, y, opacity} = this.props
 
         return(
-            <div className="dialogue-comment">
+            <animated.div className="dialogue-comment"
+            style={{
+                transform: y.interpolate(y => `translate3d(0,${y}%,0)`),
+                opacity, 
+            }}>
                 <div className="profile-image">
                     <img src={user.photo ? API.serverUrl+user.photo : "/images/user-fallback.png"}alt="" />
                 </div>
@@ -28,7 +33,7 @@ class Comment extends Component {
                 ) : null
                 }
 
-            </div>
+            </animated.div>
         )
     }
 }

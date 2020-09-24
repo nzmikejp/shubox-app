@@ -23,10 +23,10 @@ body {
     font-family: $primary-font;
 }
 
-.app {
+.App {
     height: 100vh;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 main {
