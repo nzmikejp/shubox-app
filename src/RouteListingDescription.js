@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {navigate} from '@reach/router'
-import {Keyframes} from 'react-spring/renderprops'
+import {Keyframes, config} from 'react-spring/renderprops'
 import Comment from './Comment'
 import API from './API'
 
@@ -123,7 +123,8 @@ class RouteListingDescription extends Component {
                                     native
                                     items={comments}
                                     keys={comments.map((comment) => comment.id)}
-                                    state={'appear'}>
+                                    state={'appear'}
+                                    config={config.stiff}>
 
                                     {(comment) => ({y, opacity, ...props}) => {
 

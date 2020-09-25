@@ -10,7 +10,6 @@ class Listing extends Component {
         var photoFallback = '/images/fallback.svg'
         var pricePrefix = '$'+price
         var userFallback = '/images/user-fallback.png'
-        console.log(this.props)
 
         return (
             <animated.div className="listing-item" 
@@ -36,7 +35,7 @@ class Listing extends Component {
                     <img src={photo ? API.serverUrl+photo : photoFallback} alt="" />
                 </div>
                 <div className="profile-image" onClick={() => {navigate('/user/'+user.id+'/listings')}}>
-                    {/* <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="" /> */}
+                    <img src={user.photo ? API.serverUrl+user.photo : userFallback} alt="" />
                 </div>
                 
             </animated.div>

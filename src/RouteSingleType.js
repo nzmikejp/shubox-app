@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Listing from './Listing'
-import {Keyframes} from 'react-spring/renderprops'
+import {Keyframes, config} from 'react-spring/renderprops'
 import API from './API'
 
 const ListingAnimation = Keyframes.Trail({
@@ -26,7 +26,6 @@ class RouteSingleType extends Component {
 
     render(){
         var {type} = this.state
-        console.log(type)
         
         return type ? (
             <main>
@@ -36,7 +35,8 @@ class RouteSingleType extends Component {
                             native
                             items={type.listings.sort((a,b)=>b.id-a.id)}
                             keys={type.listings.map((listing) => listing.id)}
-                            state={'appear'}>
+                            state={'appear'}
+                            config={config.stiff}>
 
                             {(listing) => ({y, opacity,...props}) => {
 

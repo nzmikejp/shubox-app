@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Type from './Type'
-import {Keyframes} from 'react-spring/renderprops'
+import {Keyframes, config} from 'react-spring/renderprops'
 import API from './API'
 
 const TypesAnimation = Keyframes.Trail({
@@ -36,7 +36,8 @@ class RouteTypes extends Component {
                         native
                         items={types}
                         keys={types.map((type) => type.id)}
-                        state={'appear'}>
+                        state={'appear'}
+                        config={config.stiff}>
 
                         {(type) => ({y, opacity, ...props}) => {
 

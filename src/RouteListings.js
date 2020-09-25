@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Listing from './Listing'
-import {Keyframes} from 'react-spring/renderprops'
+import {Keyframes, config} from 'react-spring/renderprops'
 import API from './API'
 
 
@@ -39,7 +39,8 @@ class Listings extends Component {
                             native
                             items={listings}
                             keys={listings.map((listing) => listing.id)}
-                            state={'appear'}>
+                            state={'appear'}
+                            config={config.stiff}>
 
                             {(listing) => ({ y, opacity,...props }) => {
 
