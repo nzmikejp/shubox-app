@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, Match } from "@reach/router"
 import RouteLogin from './RouteLogin'
 import RouteSignup from './RouteSignup'
-import RouteTypes from './RouteTypes'
+// import RouteTypes from './RouteTypes'
 import RouteListings from './RouteListings'
 import RouteAddListing from './RouteAddListing'
 import RouteUpdateListing from './RouteUpdateListing'
@@ -43,7 +43,7 @@ class App extends Component {
           <Router>
             <RouteLogin setCurrentUser={this.setCurrentUser} path="/users/authenticate"/>
             <RouteSignup path="users/create"/>
-            {currentUser ? <RouteTypes path="types" currentUser={currentUser} setCurrentUser={this.setCurrentUser}/> : null}
+            {/* {currentUser ? <RouteTypes path="types" currentUser={currentUser} setCurrentUser={this.setCurrentUser}/> : null} */}
             {currentUser ? <RouteListings path="listings" currentUser={currentUser}/> : null}
             <RouteAddListing path="listings/create"/>
             <RouteUpdateListing path="listings/:id/edit"/>
